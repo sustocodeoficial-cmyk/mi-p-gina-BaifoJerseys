@@ -1,0 +1,2400 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w,d,s,l,i){
+            w[l]=w[l]||[];
+            w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+            var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),
+            dl=l!='dataLayer'?'&l='+l:'';
+            j.async=true;
+            j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+            f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MH8F8QT3');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DM7QPR24LC"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag(){
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'G-DM7QPR24LC');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Báifo Football Store</title>
+
+    <style>
+
+        :root {
+            --color-guinda: #631A24;
+            --color-crema: #FDFBF7;
+            --color-oscuro: #1E1E1E;
+            --color-gris-claro: #F0EDE9;
+            --color-gris-texto: #666666;
+            --color-dorado: #C8A96B;
+            --sombra-suave: 0 8px 20px rgba(0, 0, 0, 0.08);
+            --sombra-fuerte: 0 18px 36px rgba(0, 0, 0, 0.16);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            text-rendering: optimizeLegibility;
+        }
+
+        body {
+            background: var(--color-crema);
+            color: var(--color-oscuro);
+            line-height: 1.5;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* =========================
+           BARRA SUPERIOR
+        ========================= */
+
+        .top-bar {
+            background: var(--color-oscuro);
+            color: var(--color-crema);
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            padding: 0.75rem 1rem;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            animation: fadeDown 0.8s ease;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: linear-gradient(135deg, var(--color-guinda), #401016);
+            color: var(--color-crema);
+            text-align: center;
+            padding: 2rem 1rem 2.5rem;
+            border-bottom: 4px solid var(--color-oscuro);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            animation: fadeDown 0.9s ease;
+        }
+
+        .logo-tienda {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            border: 3px solid rgba(255,255,255,0.18);
+            animation: floatSoft 3.5s ease-in-out infinite;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .logo-tienda:hover {
+            transform: scale(1.05);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 2rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 0 1rem;
+            animation: fadeUp 1s ease;
+        }
+
+        .hero-box {
+            background: linear-gradient(
+                135deg,
+                rgba(99,26,36,0.08),
+                rgba(200,169,107,0.10)
+            );
+            border: 1px solid rgba(99,26,36,0.12);
+            border-radius: 18px;
+            padding: 2rem;
+            box-shadow: var(--sombra-suave);
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .hero-texto h2 {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+            color: var(--color-guinda);
+        }
+
+        .hero-texto p {
+            color: var(--color-gris-texto);
+            margin-bottom: 1.2rem;
+            max-width: 600px;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .hero-badge {
+            background: #fff;
+            border: 1px solid rgba(99,26,36,0.10);
+            color: var(--color-oscuro);
+            padding: 0.7rem 1rem;
+            border-radius: 999px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        .hero-card {
+            background: var(--color-oscuro);
+            color: var(--color-crema);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: var(--sombra-fuerte);
+        }
+
+        .hero-card h3 {
+            margin-bottom: 0.8rem;
+            color: var(--color-dorado);
+        }
+
+        .hero-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.65rem;
+            font-size: 0.95rem;
+        }
+
+        /* =========================
+           ENTREGAS
+        ========================= */
+
+        .barra-entregas {
+            background-color: var(--color-oscuro);
+            color: var(--color-crema);
+            text-align: center;
+            padding: 0.8rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 4px solid var(--color-guinda);
+            letter-spacing: 0.5px;
+            margin-top: 2rem;
+        }
+
+        /* =========================
+           BUSCADOR
+        ========================= */
+
+        .contenedor-buscador {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            padding: 0 1rem;
+            animation: fadeUp 1.2s ease;
+        }
+
+        .input-buscador {
+            width: 100%;
+            padding: 0.95rem 1.2rem;
+            border: 2px solid var(--color-gris-claro);
+            border-radius: 999px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            background: #fff;
+        }
+
+        .input-buscador:focus {
+            border-color: var(--color-guinda);
+            transform: scale(1.01);
+            box-shadow: 0 8px 18px rgba(99, 26, 36, 0.12);
+        }
+
+        /* =========================
+           TITULO
+        ========================= */
+
+        .titulo-seccion {
+            max-width: 1200px;
+            margin: 2.2rem auto 0;
+            padding: 0 1rem;
+            text-align: center;
+        }
+
+        .titulo-seccion h2 {
+            color: var(--color-guinda);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .titulo-seccion p {
+            color: var(--color-gris-texto);
+            font-size: 0.95rem;
+        }
+
+        /* =========================
+           CATALOGO
+        ========================= */
+
+        .catalogo {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .tarjeta-producto {
+            position: relative;
+            min-height: 470px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--sombra-suave);
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            transition:
+                opacity 0.7s ease,
+                transform 0.7s ease,
+                box-shadow 0.4s ease;
+            background: #000;
+        }
+
+        .tarjeta-producto.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .tarjeta-producto:hover {
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: var(--sombra-fuerte);
+        }
+
+        .imagen-contenedor {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .imagen-contenedor img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .tarjeta-producto:hover .imagen-contenedor img {
+            transform: scale(1.1);
+        }
+
+        .overlay-galeria {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(0,0,0,0.88) 0%,
+                rgba(0,0,0,0.60) 35%,
+                rgba(0,0,0,0.18) 65%,
+                rgba(0,0,0,0.05) 100%
+            );
+        }
+
+        .badge-producto {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            z-index: 3;
+            background: var(--color-guinda);
+            color: #fff;
+            padding: 0.5rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            box-shadow: 0 6px 16px rgba(99,26,36,0.22);
+        }
+
+        .contenido-galeria {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 3;
+            padding: 1.4rem;
+            color: #fff;
+            transform: translateY(0);
+            transition: transform 0.35s ease;
+        }
+
+        .tarjeta-producto:hover .contenido-galeria {
+            transform: translateY(-4px);
+        }
+
+        .contenido-galeria h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.45rem;
+            line-height: 1.3;
+        }
+
+        .precio {
+            font-size: 1.45rem;
+            color: var(--color-dorado);
+            font-weight: 800;
+            margin-bottom: 0.55rem;
+        }
+
+        .tallas-contenedor {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.88);
+            margin-bottom: 0.7rem;
+            text-transform: uppercase;
+        }
+
+        .tallas-contenedor span {
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .detalle-extra {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.86);
+            margin-bottom: 1rem;
+        }
+
+        .acciones-producto {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-instagram,
+        .btn-whatsapp {
+            border: none;
+            cursor: pointer;
+            padding: 0.85rem 1rem;
+            border-radius: 10px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+            transition:
+                background-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .btn-instagram {
+            background-color: #ffffff;
+            color: var(--color-oscuro);
+        }
+
+        .btn-instagram:hover {
+            background-color: var(--color-guinda);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba(99, 26, 36, 0.28);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: #fff;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1ebe5d;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba(37, 211, 102, 0.28);
+        }
+
+        .sin-resultados {
+            display: none;
+            max-width: 1200px;
+            margin: -0.5rem auto 2rem;
+            padding: 0 1rem;
+            text-align: center;
+            color: var(--color-gris-texto);
+            font-weight: 600;
+        }
+
+        /* =========================
+           BENEFICIOS
+        ========================= */
+
+        .beneficios {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        .beneficios h2 {
+            text-align: center;
+            color: var(--color-guinda);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .grid-beneficios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .beneficio-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 1.4rem;
+            box-shadow: var(--sombra-suave);
+            border: 1px solid rgba(99,26,36,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .beneficio-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--sombra-fuerte);
+        }
+
+        .beneficio-card h3 {
+            color: var(--color-guinda);
+            margin-bottom: 0.55rem;
+            font-size: 1rem;
+        }
+
+        .beneficio-card p {
+            color: var(--color-gris-texto);
+            font-size: 0.92rem;
+        }
+
+        /* =========================
+           TESTIMONIOS
+        ========================= */
+
+        .testimonios {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        .testimonios h2 {
+            text-align: center;
+            color: var(--color-guinda);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .grid-testimonios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .testimonio {
+            background: #fff;
+            border-left: 4px solid var(--color-guinda);
+            border-radius: 12px;
+            padding: 1.2rem;
+            box-shadow: var(--sombra-suave);
+        }
+
+        .testimonio p {
+            color: var(--color-gris-texto);
+            margin-bottom: 0.7rem;
+            font-size: 0.94rem;
+        }
+
+        .testimonio strong {
+            color: var(--color-oscuro);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background-color: var(--color-oscuro);
+            color: var(--color-crema);
+            margin-top: 3rem;
+            padding: 2rem 1rem;
+        }
+
+        .footer-contenido {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .footer-col h3 {
+            color: var(--color-dorado);
+            margin-bottom: 0.7rem;
+        }
+
+        .footer-col p,
+        .footer-col a {
+            color: rgba(253, 251, 247, 0.9);
+            font-size: 0.92rem;
+            margin-bottom: 0.45rem;
+            display: block;
+        }
+
+        .footer-copy {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+
+        /* =========================
+           POPUP PROMOCIÓN
+        ========================= */
+
+        .popup-promocion {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.78);
+            backdrop-filter: blur(4px);
+            animation: popupEntrada 0.35s ease;
+        }
+
+        .popup-promocion.oculto {
+            display: none;
+        }
+
+        .popup-contenido {
+            position: relative;
+            width: min(92vw, 520px);
+            max-height: 90vh;
+            animation: popupEscala 0.35s ease;
+        }
+
+        .popup-contenido img {
+            display: block;
+            width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+        }
+
+        .cerrar-popup {
+            position: absolute;
+            top: -14px;
+            right: -14px;
+            width: 42px;
+            height: 42px;
+            border: none;
+            border-radius: 50%;
+            background: #fff;
+            color: #1E1E1E;
+            font-size: 1.5rem;
+            font-weight: 800;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .cerrar-popup:hover {
+            transform: scale(1.08);
+            background: #f0ede9;
+        }
+
+        /* =========================
+           MODAL DE PEDIDO
+        ========================= */
+
+        .modal-pedido {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.78);
+            backdrop-filter: blur(5px);
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+
+        .modal-pedido.oculto {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .modal-pedido-contenido {
+            width: min(92vw, 430px);
+            background: #fff;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+            position: relative;
+            animation: modalPedidoEntrada 0.25s ease;
+        }
+
+        .modal-pedido-contenido h3 {
+            color: var(--color-guinda);
+            font-size: 1.35rem;
+            margin-bottom: 0.35rem;
+            padding-right: 35px;
+        }
+
+        .modal-pedido-producto {
+            color: var(--color-gris-texto);
+            font-size: 0.92rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .modal-pedido-precio {
+            color: var(--color-guinda);
+            font-size: 1.15rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+        }
+
+        .modal-pedido-label {
+            display: block;
+            font-weight: 700;
+            color: var(--color-oscuro);
+            margin-bottom: 0.7rem;
+        }
+
+        .tallas-pedido {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-bottom: 1.3rem;
+        }
+
+        .talla-pedido {
+            border: 2px solid var(--color-gris-claro);
+            background: #fff;
+            color: var(--color-oscuro);
+            padding: 0.7rem 1rem;
+            min-width: 58px;
+            border-radius: 10px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .talla-pedido:hover {
+            border-color: var(--color-guinda);
+            transform: translateY(-2px);
+        }
+
+        .talla-pedido.seleccionada {
+            background: var(--color-guinda);
+            color: #fff;
+            border-color: var(--color-guinda);
+            box-shadow: 0 7px 16px rgba(99,26,36,0.22);
+        }
+
+        .boton-enviar-pedido {
+            width: 100%;
+            border: none;
+            padding: 0.95rem 1rem;
+            border-radius: 11px;
+            font-size: 0.92rem;
+            font-weight: 800;
+            cursor: pointer;
+            margin-top: 0.4rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .boton-enviar-pedido:hover {
+            transform: translateY(-2px);
+        }
+
+        .boton-whatsapp-modal {
+            background: #25D366;
+            color: #fff;
+            box-shadow: 0 8px 18px rgba(37,211,102,0.22);
+        }
+
+        .boton-instagram-modal {
+            background: var(--color-guinda);
+            color: #fff;
+            box-shadow: 0 8px 18px rgba(99,26,36,0.22);
+        }
+
+        .cerrar-modal-pedido {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 36px;
+            height: 36px;
+            border: none;
+            border-radius: 50%;
+            background: var(--color-gris-claro);
+            color: var(--color-oscuro);
+            font-size: 1.35rem;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .mensaje-instagram {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 0.75rem;
+            border-radius: 10px;
+            background: #f0ede9;
+            color: var(--color-gris-texto);
+            font-size: 0.82rem;
+            text-align: center;
+        }
+
+        .mensaje-instagram.mostrar {
+            display: block;
+        }
+
+        /* =========================
+           ANIMACIONES
+        ========================= */
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatSoft {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        @keyframes popupEntrada {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes popupEscala {
+            from {
+                transform: scale(0.92);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes modalPedidoEntrada {
+            from {
+                opacity: 0;
+                transform: scale(0.94) translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .hero-box {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 768px) {
+
+            .logo-tienda {
+                width: 110px;
+                height: 110px;
+            }
+
+            header h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero-texto h2 {
+                font-size: 1.55rem;
+            }
+
+            .tarjeta-producto {
+                min-height: 430px;
+            }
+
+            .barra-entregas {
+                font-size: 0.78rem;
+                padding: 0.7rem;
+            }
+
+            .top-bar {
+                gap: 0.8rem;
+                font-size: 0.75rem;
+            }
+
+            .acciones-producto {
+                flex-direction: column;
+            }
+
+            .btn-instagram,
+            .btn-whatsapp {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-MH8F8QT3"
+            height="0"
+            width="0"
+            style="display:none;visibility:hidden">
+        </iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+
+    <!-- =========================
+         BARRA SUPERIOR
+    ========================= -->
+
+    <div class="top-bar">
+
+        <span>🚚 Entregas en CDMX</span>
+
+        <span>✅ Jerseys premium</span>
+
+        <span>📩 Atención por Instagram y WhatsApp</span>
+
+        <span>🔥 Modelos exclusivos</span>
+
+    </div>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <img
+            src="https://i.postimg.cc/vZM4nz48/IMG-8344.jpg"
+            alt="Báifo Football Store Logo"
+            class="logo-tienda"
+        >
+
+        <h1>
+            Báifo Football Store
+        </h1>
+
+        <p>
+            Selección de Jerseys Premium
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <div class="hero-box">
+
+            <div class="hero-texto">
+
+                <h2>
+                    Jerseys con estilo, calidad y presencia
+                </h2>
+
+                <p>
+                    Encuentra modelos de clubes y selecciones con diseño premium,
+                    excelente presentación y entregas en CDMX.
+                    Una tienda pensada para quienes viven el fútbol con identidad.
+                </p>
+
+                <div class="hero-badges">
+
+                    <span class="hero-badge">
+                        ⚽ Clubes y selecciones
+                    </span>
+
+                    <span class="hero-badge">
+                        📍 Entregas personales
+                    </span>
+
+                    <span class="hero-badge">
+                        🔥 Piezas destacadas
+                    </span>
+
+                    <span class="hero-badge">
+                        📱 Pedidos por WhatsApp
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-card">
+
+                <h3>
+                    ¿Por qué elegir Báifo?
+                </h3>
+
+                <ul>
+
+                    <li>✔ Atención rápida y directa</li>
+
+                    <li>✔ Diseños que destacan</li>
+
+                    <li>✔ Calidad premium</li>
+
+                    <li>✔ Entregas en puntos de encuentro</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ENTREGAS
+    ========================= -->
+
+    <div class="barra-entregas">
+
+        🚇 Entregas en CDMX
+        <br>
+        (Líneas 2, 3 y 5 del Metro, y puntos de encuentro)
+
+    </div>
+
+
+    <!-- =========================
+         BUSCADOR
+    ========================= -->
+
+    <div class="contenedor-buscador">
+
+        <input
+            type="text"
+            id="buscador"
+            class="input-buscador"
+            placeholder="Búsqueda personalizada: jersey, equipo o selección..."
+            aria-label="Búsqueda personalizada de jersey, equipo o selección"
+        >
+
+    </div>
+
+
+    <!-- =========================
+         TITULO CATALOGO
+    ========================= -->
+
+    <section class="titulo-seccion">
+
+        <h2>
+            Catálogo
+        </h2>
+
+        <p>
+            Todos nuestros jerseys disponibles.
+            Busca por equipo o selección.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         CATALOGO
+    ========================= -->
+
+    <section class="catalogo" id="catalogo">
+
+
+        <!-- PRODUCTO 1 -->
+
+        <div class="tarjeta-producto">
+
+            <span class="badge-producto">
+                NUEVO
+            </span>
+
+            <div class="imagen-contenedor">
+
+                <img
+                    src="https://i.postimg.cc/xTmxsK9J/e3f8fad5-21ab-48fd-8b95-94cf4eb49d94.jpg"
+                    alt="Real Madrid Playera Alternativa Rosa"
+                >
+
+            </div>
+
+            <div class="overlay-galeria"></div>
+
+            <div class="contenido-galeria">
+
+                <h3>
+                    Real Madrid (Playera Alternativa Rosa)
+                </h3>
+
+                <p class="precio">
+                    $400.00
+                </p>
+
+                <div class="tallas-contenedor">
+
+                    Tallas:
+
+                    <span>
+                        G, XL, XXL
+                    </span>
+
+                </div>
+
+                <p class="detalle-extra">
+                    Diseño alternativo con una presencia distinta y moderna.
+                </p>
+
+                <div class="acciones-producto">
+
+                    <button
+                        type="button"
+                        class="btn-instagram"
+                    >
+                        📷 Pedir por Instagram
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn-whatsapp"
+                    >
+                        💬 Pedir por WhatsApp
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTO 2 -->
+
+        <div class="tarjeta-producto">
+
+            <span class="badge-producto">
+                MÁS VENDIDO
+            </span>
+
+            <div class="imagen-contenedor">
+
+                <img
+                    src="https://i.postimg.cc/L6PCyzmg/6bd55d04-d6df-41b2-9240-3b4ef2b5b368.jpg"
+                    alt="Real Madrid Playera Local"
+                >
+
+            </div>
+
+            <div class="overlay-galeria"></div>
+
+            <div class="contenido-galeria">
+
+                <h3>
+                    Real Madrid (Playera Local)
+                </h3>
+
+                <p class="precio">
+                    $400.00
+                </p>
+
+                <div class="tallas-contenedor">
+
+                    Tallas:
+
+                    <span>
+                        S, M, G, XL, XXXL
+                    </span>
+
+                </div>
+
+                <p class="detalle-extra">
+                    Una pieza clásica con fuerza visual y gran salida.
+                </p>
+
+                <div class="acciones-producto">
+
+                    <button
+                        type="button"
+                        class="btn-instagram"
+                    >
+                        📷 Pedir por Instagram
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn-whatsapp"
+                    >
+                        💬 Pedir por WhatsApp
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTO 3 -->
+
+        <div class="tarjeta-producto">
+
+            <span class="badge-producto">
+                EDICIÓN ESPECIAL
+            </span>
+
+            <div class="imagen-contenedor">
+
+                <img
+                    src="https://i.postimg.cc/m29XdQTF/22c67bcd-fb1c-4eaa-98d0-b6723c918edf.jpg"
+                    alt="Noruega Total Black"
+                >
+
+            </div>
+
+            <div class="overlay-galeria"></div>
+
+            <div class="contenido-galeria">
+
+                <h3>
+                    Noruega Total Black
+                </h3>
+
+                <p class="precio">
+                    $415.00
+                </p>
+
+                <div class="tallas-contenedor">
+
+                    Tallas:
+
+                    <span>
+                        S, M, G, XL, XXL
+                    </span>
+
+                </div>
+
+                <p class="detalle-extra">
+                    Modelo sobrio, elegante y perfecto para destacar.
+                </p>
+
+                <div class="acciones-producto">
+
+                    <button
+                        type="button"
+                        class="btn-instagram"
+                    >
+                        📷 Pedir por Instagram
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn-whatsapp"
+                    >
+                        💬 Pedir por WhatsApp
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTO 4 -->
+
+        <div class="tarjeta-producto">
+
+            <span class="badge-producto">
+                RETRO
+            </span>
+
+            <div class="imagen-contenedor">
+
+                <img
+                    src="https://i.postimg.cc/PqnGgBHg/726e1618-eefa-432f-9374-2a8b113d4d56.jpg"
+                    alt="Brasil 1994 Retro"
+                >
+
+            </div>
+
+            <div class="overlay-galeria"></div>
+
+            <div class="contenido-galeria">
+
+                <h3>
+                    Brasil 1994 Retro
+                </h3>
+
+                <p class="precio">
+                    $400.00
+                </p>
+
+                <div class="tallas-contenedor">
+
+                    Tallas:
+
+                    <span>
+                        S, M, G, XL, XXL
+                    </span>
+
+                </div>
+
+                <p class="detalle-extra">
+                    Un clásico retro que representa la historia y el estilo de Brasil.
+                </p>
+
+                <div class="acciones-producto">
+
+                    <button
+                        type="button"
+                        class="btn-instagram"
+                    >
+                        📷 Pedir por Instagram
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn-whatsapp"
+                    >
+                        💬 Pedir por WhatsApp
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTO 5 -->
+
+        <div class="tarjeta-producto">
+
+            <span class="badge-producto">
+                ALTERNATIVA
+            </span>
+
+            <div class="imagen-contenedor">
+
+                <img
+                    src="https://i.postimg.cc/wBYKCSzn/9b8be948-8a29-4a4f-bb40-0dc8914c644e.jpg"
+                    alt="Juventus Alternativa VFan"
+                >
+
+            </div>
+
+            <div class="overlay-galeria"></div>
+
+            <div class="contenido-galeria">
+
+                <h3>
+                    Juventus Alternativa VFan
+                </h3>
+
+                <p class="precio">
+                    $400.00
+                </p>
+
+                <div class="tallas-contenedor">
+
+                    Tallas:
+
+                    <span>
+                        S, M, G, XL
+                    </span>
+
+                </div>
+
+                <p class="detalle-extra">
+                    Diseño alternativo de la Juventus con un estilo moderno y diferente.
+                </p>
+
+                <div class="acciones-producto">
+
+                    <button
+                        type="button"
+                        class="btn-instagram"
+                    >
+                        📷 Pedir por Instagram
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn-whatsapp"
+                    >
+                        💬 Pedir por WhatsApp
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTO 6 -->
+
+        <div class="tarjeta-producto">
+
+            <span class="badge-producto">
+                EDICIÓN ESPECIAL
+            </span>
+
+            <div class="imagen-contenedor">
+
+                <img
+                    src="https://i.postimg.cc/XNzPMTc8/5e6e2693-135e-4924-b454-637b0b84e17b.jpg"
+                    alt="Portugal Black Edition"
+                >
+
+            </div>
+
+            <div class="overlay-galeria"></div>
+
+            <div class="contenido-galeria">
+
+                <h3>
+                    Portugal Black Edition
+                </h3>
+
+                <p class="precio">
+                    $415.00
+                </p>
+
+                <div class="tallas-contenedor">
+
+                    Tallas:
+
+                    <span>
+                        S, M, G, XL, XXL, XXXL
+                    </span>
+
+                </div>
+
+                <p class="detalle-extra">
+                    Una edición especial en negro con un diseño elegante y contundente.
+                </p>
+
+                <div class="acciones-producto">
+
+                    <button
+                        type="button"
+                        class="btn-instagram"
+                    >
+                        📷 Pedir por Instagram
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn-whatsapp"
+                    >
+                        💬 Pedir por WhatsApp
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div
+        id="sin-resultados"
+        class="sin-resultados"
+    >
+        No encontramos jerseys con esa búsqueda.
+    </div>
+
+
+    <!-- =========================
+         BENEFICIOS
+    ========================= -->
+
+    <section class="beneficios">
+
+        <h2>
+            ¿Por qué comprar aquí?
+        </h2>
+
+        <div class="grid-beneficios">
+
+            <div class="beneficio-card">
+
+                <h3>
+                    Calidad premium
+                </h3>
+
+                <p>
+                    Modelos seleccionados con gran presencia visual
+                    y acabados atractivos.
+                </p>
+
+            </div>
+
+            <div class="beneficio-card">
+
+                <h3>
+                    Entregas en CDMX
+                </h3>
+
+                <p>
+                    Puntos de encuentro prácticos para facilitar
+                    la entrega de tu pedido.
+                </p>
+
+            </div>
+
+            <div class="beneficio-card">
+
+                <h3>
+                    Atención directa
+                </h3>
+
+                <p>
+                    Comunicación rápida para resolver dudas,
+                    tallas y disponibilidad.
+                </p>
+
+            </div>
+
+            <div class="beneficio-card">
+
+                <h3>
+                    Modelos exclusivos
+                </h3>
+
+                <p>
+                    Opciones que resaltan por su diseño y estilo
+                    dentro del catálogo.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         TESTIMONIOS
+    ========================= -->
+
+    <section class="testimonios">
+
+        <h2>
+            Lo que dicen nuestros clientes
+        </h2>
+
+        <div class="grid-testimonios">
+
+            <div class="testimonio">
+
+                <p>
+                    "Muy buena calidad y la entrega fue súper sencilla."
+                </p>
+
+                <strong>
+                    — Cliente Báifo
+                </strong>
+
+            </div>
+
+            <div class="testimonio">
+
+                <p>
+                    "La playera llegó excelente, se ve todavía mejor en persona."
+                </p>
+
+                <strong>
+                    — Cliente satisfecho
+                </strong>
+
+            </div>
+
+            <div class="testimonio">
+
+                <p>
+                    "Atención rápida y modelos diferentes a los de otras tiendas."
+                </p>
+
+                <strong>
+                    — Comprador frecuente
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <div class="footer-contenido">
+
+            <div class="footer-col">
+
+                <h3>
+                    Báifo Football Store
+                </h3>
+
+                <p>
+                    Jerseys premium para quienes viven el fútbol con estilo.
+                </p>
+
+            </div>
+
+            <div class="footer-col">
+
+                <h3>
+                    Entregas
+                </h3>
+
+                <p>
+                    CDMX
+                </p>
+
+                <p>
+                    Líneas 2, 3 y 5 del Metro
+                </p>
+
+                <p>
+                    Puntos de encuentro
+                </p>
+
+            </div>
+
+            <div class="footer-col">
+
+                <h3>
+                    Contacto
+                </h3>
+
+                <a
+                    href="https://www.instagram.com/baifo_jerseys/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Instagram oficial
+                </a>
+
+                <a
+                    href="https://wa.me/525644006892"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    WhatsApp: 56 4400 6892
+                </a>
+
+                <p>
+                    Atención directa por mensaje
+                </p>
+
+            </div>
+
+            <div class="footer-col">
+
+                <h3>
+                    Horario
+                </h3>
+
+                <p>
+                    Lunes a sábado
+                </p>
+
+                <p>
+                    Sujeto a disponibilidad
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="footer-copy">
+
+            © 2026 Báifo Football Store · Todos los derechos reservados.
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         POPUP PROMOCIONAL
+    ========================= -->
+
+    <div
+        id="popup-promocion"
+        class="popup-promocion"
+    >
+
+        <div class="popup-contenido">
+
+            <button
+                id="cerrar-popup"
+                class="cerrar-popup"
+                aria-label="Cerrar promoción"
+            >
+                ×
+            </button>
+
+            <img
+                src="https://i.postimg.cc/8zhkfkXX/Post-de-Instagram-(34)-Descuentos-Promociones-Fashion-Elegante-Minimalista-Blanco-y-Negro.jpg"
+                alt="Promoción de Báifo Football Store"
+            >
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MODAL DE PEDIDO
+    ========================= -->
+
+    <div
+        id="modal-pedido"
+        class="modal-pedido oculto"
+    >
+
+        <div class="modal-pedido-contenido">
+
+            <button
+                id="cerrar-modal-pedido"
+                class="cerrar-modal-pedido"
+                aria-label="Cerrar"
+            >
+                ×
+            </button>
+
+            <h3 id="modal-pedido-titulo">
+                Elige tu talla
+            </h3>
+
+            <p
+                id="modal-pedido-producto"
+                class="modal-pedido-producto"
+            ></p>
+
+            <p
+                id="modal-pedido-precio"
+                class="modal-pedido-precio"
+            ></p>
+
+            <span class="modal-pedido-label">
+                Selecciona tu talla:
+            </span>
+
+            <div
+                id="tallas-pedido"
+                class="tallas-pedido"
+            ></div>
+
+            <button
+                id="enviar-whatsapp"
+                class="boton-enviar-pedido boton-whatsapp-modal"
+                type="button"
+            >
+                💬 Enviar pedido por WhatsApp
+            </button>
+
+            <button
+                id="enviar-instagram"
+                class="boton-enviar-pedido boton-instagram-modal"
+                type="button"
+            >
+                📷 Continuar por Instagram
+            </button>
+
+            <div
+                id="mensaje-instagram"
+                class="mensaje-instagram"
+            >
+                Tu pedido se copiará automáticamente.
+                Después solo tendrás que pegarlo en Instagram.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        /* ==========================================
+           BUSCADOR
+        ========================================== */
+
+        const buscador = document.getElementById("buscador");
+        const productos = document.querySelectorAll(".tarjeta-producto");
+        const sinResultados = document.getElementById("sin-resultados");
+
+        buscador.addEventListener("input", function () {
+
+            const texto = this.value
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "");
+
+            let encontrados = 0;
+
+            productos.forEach(function (producto) {
+
+                const contenido = producto.textContent
+                    .toLowerCase()
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "");
+
+                if (contenido.includes(texto)) {
+
+                    producto.style.display = "";
+                    encontrados++;
+
+                } else {
+
+                    producto.style.display = "none";
+
+                }
+
+            });
+
+            if (encontrados === 0 && texto.trim() !== "") {
+
+                sinResultados.style.display = "block";
+
+            } else {
+
+                sinResultados.style.display = "none";
+
+            }
+
+        });
+
+
+        /* ==========================================
+           ANIMACIÓN DE PRODUCTOS
+        ========================================== */
+
+        const observador = new IntersectionObserver(
+            function (entradas) {
+
+                entradas.forEach(function (entrada) {
+
+                    if (entrada.isIntersecting) {
+
+                        entrada.target.classList.add("visible");
+
+                        observador.unobserve(entrada.target);
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+        productos.forEach(function (producto) {
+
+            observador.observe(producto);
+
+        });
+
+
+        /* ==========================================
+           POPUP
+        ========================================== */
+
+        const popup =
+            document.getElementById("popup-promocion");
+
+        const cerrarPopup =
+            document.getElementById("cerrar-popup");
+
+
+        cerrarPopup.addEventListener("click", function () {
+
+            popup.classList.add("oculto");
+
+        });
+
+
+        popup.addEventListener("click", function (evento) {
+
+            if (evento.target === popup) {
+
+                popup.classList.add("oculto");
+
+            }
+
+        });
+
+
+        /* ==========================================
+           MODAL DE PEDIDO
+        ========================================== */
+
+        const modalPedido =
+            document.getElementById("modal-pedido");
+
+        const cerrarModalPedido =
+            document.getElementById("cerrar-modal-pedido");
+
+        const modalPedidoTitulo =
+            document.getElementById("modal-pedido-titulo");
+
+        const modalPedidoProducto =
+            document.getElementById("modal-pedido-producto");
+
+        const modalPedidoPrecio =
+            document.getElementById("modal-pedido-precio");
+
+        const tallasPedido =
+            document.getElementById("tallas-pedido");
+
+        const enviarWhatsapp =
+            document.getElementById("enviar-whatsapp");
+
+        const enviarInstagram =
+            document.getElementById("enviar-instagram");
+
+        const mensajeInstagram =
+            document.getElementById("mensaje-instagram");
+
+
+        let productoSeleccionado = "";
+        let precioSeleccionado = "";
+        let tallaSeleccionada = "";
+        let tipoPedido = "";
+
+
+        /* ==========================================
+           ABRIR MODAL
+        ========================================== */
+
+        function abrirModalPedido(producto, tipo) {
+
+            const titulo =
+                producto.querySelector("h3").textContent.trim();
+
+            const precio =
+                producto.querySelector(".precio").textContent.trim();
+
+            const tallasTexto =
+                producto
+                    .querySelector(".tallas-contenedor span")
+                    .textContent
+                    .trim();
+
+
+            const tallas = tallasTexto
+                .split(",")
+                .map(function (talla) {
+                    return talla.trim();
+                })
+                .filter(function (talla) {
+                    return talla !== "";
+                });
+
+
+            productoSeleccionado = titulo;
+            precioSeleccionado = precio;
+            tallaSeleccionada = "";
+            tipoPedido = tipo;
+
+
+            modalPedidoProducto.textContent =
+                titulo;
+
+            modalPedidoPrecio.textContent =
+                precio;
+
+
+            tallasPedido.innerHTML = "";
+
+
+            tallas.forEach(function (talla) {
+
+                const boton =
+                    document.createElement("button");
+
+                boton.type = "button";
+
+                boton.className =
+                    "talla-pedido";
+
+                boton.textContent =
+                    talla;
+
+
+                boton.addEventListener("click", function () {
+
+                    document
+                        .querySelectorAll(".talla-pedido")
+                        .forEach(function (otroBoton) {
+
+                            otroBoton.classList.remove(
+                                "seleccionada"
+                            );
+
+                        });
+
+
+                    boton.classList.add(
+                        "seleccionada"
+                    );
+
+
+                    tallaSeleccionada =
+                        talla;
+
+                });
+
+
+                tallasPedido.appendChild(
+                    boton
+                );
+
+            });
+
+
+            if (tipo === "whatsapp") {
+
+                modalPedidoTitulo.textContent =
+                    "Elige tu talla";
+
+                enviarWhatsapp.style.display =
+                    "block";
+
+                enviarInstagram.style.display =
+                    "none";
+
+                mensajeInstagram.classList.remove(
+                    "mostrar"
+                );
+
+            } else {
+
+                modalPedidoTitulo.textContent =
+                    "Elige tu talla";
+
+                enviarWhatsapp.style.display =
+                    "none";
+
+                enviarInstagram.style.display =
+                    "block";
+
+                mensajeInstagram.classList.add(
+                    "mostrar"
+                );
+
+            }
+
+
+            modalPedido.classList.remove(
+                "oculto"
+            );
+
+        }
+
+
+        /* ==========================================
+           BOTÓN WHATSAPP
+        ========================================== */
+
+        document
+            .querySelectorAll(".btn-whatsapp")
+            .forEach(function (boton) {
+
+                boton.addEventListener(
+                    "click",
+                    function () {
+
+                        const producto =
+                            boton.closest(
+                                ".tarjeta-producto"
+                            );
+
+                        abrirModalPedido(
+                            producto,
+                            "whatsapp"
+                        );
+
+                    }
+                );
+
+            });
+
+
+        /* ==========================================
+           BOTÓN INSTAGRAM
+        ========================================== */
+
+        document
+            .querySelectorAll(".btn-instagram")
+            .forEach(function (boton) {
+
+                boton.addEventListener(
+                    "click",
+                    function () {
+
+                        const producto =
+                            boton.closest(
+                                ".tarjeta-producto"
+                            );
+
+                        abrirModalPedido(
+                            producto,
+                            "instagram"
+                        );
+
+                    }
+                );
+
+            });
+
+
+        /* ==========================================
+           CREAR MENSAJE
+        ========================================== */
+
+        function crearMensajePedido() {
+
+            return (
+                "Hola, quiero pedir:\n\n" +
+                "⚽ " + productoSeleccionado + "\n" +
+                "📏 Talla: " + tallaSeleccionada + "\n" +
+                "💰 Precio: " + precioSeleccionado + "\n\n" +
+                "¿Sigue disponible?"
+            );
+
+        }
+
+
+        /* ==========================================
+           WHATSAPP
+        ========================================== */
+
+        enviarWhatsapp.addEventListener(
+            "click",
+            function () {
+
+                if (!tallaSeleccionada) {
+
+                    alert(
+                        "Por favor selecciona una talla."
+                    );
+
+                    return;
+
+                }
+
+
+                const mensaje =
+                    crearMensajePedido();
+
+
+                const numero =
+                    "525644006892";
+
+
+                const url =
+                    "https://wa.me/" +
+                    numero +
+                    "?text=" +
+                    encodeURIComponent(
+                        mensaje
+                    );
+
+
+                window.open(
+                    url,
+                    "_blank"
+                );
+
+
+                modalPedido.classList.add(
+                    "oculto"
+                );
+
+            }
+        );
+
+
+        /* ==========================================
+           INSTAGRAM
+        ========================================== */
+
+        enviarInstagram.addEventListener(
+            "click",
+            async function () {
+
+                if (!tallaSeleccionada) {
+
+                    alert(
+                        "Por favor selecciona una talla."
+                    );
+
+                    return;
+
+                }
+
+
+                const mensaje =
+                    crearMensajePedido();
+
+
+                try {
+
+                    await navigator.clipboard.writeText(
+                        mensaje
+                    );
+
+                } catch (error) {
+
+                    const textarea =
+                        document.createElement(
+                            "textarea"
+                        );
+
+                    textarea.value =
+                        mensaje;
+
+                    textarea.style.position =
+                        "fixed";
+
+                    textarea.style.opacity =
+                        "0";
+
+                    document.body.appendChild(
+                        textarea
+                    );
+
+                    textarea.focus();
+                    textarea.select();
+
+
+                    try {
+
+                        document.execCommand(
+                            "copy"
+                        );
+
+                    } catch (error) {
+
+                    }
+
+
+                    document.body.removeChild(
+                        textarea
+                    );
+
+                }
+
+
+                window.open(
+                    "https://www.instagram.com/baifo_jerseys/",
+                    "_blank"
+                );
+
+
+                modalPedido.classList.add(
+                    "oculto"
+                );
+
+            }
+        );
+
+
+        /* ==========================================
+           CERRAR MODAL
+        ========================================== */
+
+        cerrarModalPedido.addEventListener(
+            "click",
+            function () {
+
+                modalPedido.classList.add(
+                    "oculto"
+                );
+
+            }
+        );
+
+
+        modalPedido.addEventListener(
+            "click",
+            function (evento) {
+
+                if (
+                    evento.target ===
+                    modalPedido
+                ) {
+
+                    modalPedido.classList.add(
+                        "oculto"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* ==========================================
+           ESCAPE
+        ========================================== */
+
+        document.addEventListener(
+            "keydown",
+            function (evento) {
+
+                if (evento.key === "Escape") {
+
+                    popup.classList.add(
+                        "oculto"
+                    );
+
+                    modalPedido.classList.add(
+                        "oculto"
+                    );
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
+
