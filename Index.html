@@ -33,838 +33,1438 @@
 
     <title>Báifo Football Store</title>
 
-    <style>
-
-        :root {
-            --color-guinda: #631A24;
-            --color-crema: #FDFBF7;
-            --color-oscuro: #1E1E1E;
-            --color-gris-claro: #F0EDE9;
-            --color-gris-texto: #666666;
-            --color-dorado: #C8A96B;
-            --sombra-suave: 0 8px 20px rgba(0,0,0,0.08);
-            --sombra-fuerte: 0 18px 36px rgba(0,0,0,0.16);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            -webkit-text-size-adjust: 100%;
-            text-rendering: optimizeLegibility;
-        }
-
-        body {
-            background: var(--color-crema);
-            color: var(--color-oscuro);
-            line-height: 1.5;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        button,
-        input,
-        textarea {
-            font-family: inherit;
-        }
-
-        /* BARRA SUPERIOR */
-
-        .top-bar {
-            background: var(--color-oscuro);
-            color: var(--color-crema);
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            padding: 0.75rem 1rem;
-            font-size: 0.82rem;
-            font-weight: 600;
-            letter-spacing: 0.4px;
-            animation: fadeDown 0.8s ease;
-        }
-
-        /* HEADER */
-
-        header {
-            background: linear-gradient(135deg, var(--color-guinda), #401016);
-            color: var(--color-crema);
-            text-align: center;
-            padding: 2rem 1rem 2.5rem;
-            border-bottom: 4px solid var(--color-oscuro);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.75rem;
-            animation: fadeDown 0.9s ease;
-        }
-
-        .logo-tienda {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-            border: 3px solid rgba(255,255,255,0.18);
-            animation: floatSoft 3.5s ease-in-out infinite;
-            transition: transform 0.35s ease, box-shadow 0.35s ease;
-        }
-
-        .logo-tienda:hover {
-            transform: scale(1.05);
-            box-shadow: 0 14px 28px rgba(0,0,0,0.3);
-        }
-
-        header h1 {
-            font-size: 2rem;
-            letter-spacing: 1px;
-        }
-
-        header p {
-            font-size: 0.95rem;
-            opacity: 0.95;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        /* HERO */
-
-        .hero {
-            max-width: 1200px;
-            margin: 2rem auto 0;
-            padding: 0 1rem;
-            animation: fadeUp 1s ease;
-        }
-
-        .hero-box {
-            background: linear-gradient(
-                135deg,
-                rgba(99,26,36,0.08),
-                rgba(200,169,107,0.10)
-            );
-            border: 1px solid rgba(99,26,36,0.12);
-            border-radius: 18px;
-            padding: 2rem;
-            box-shadow: var(--sombra-suave);
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .hero-texto h2 {
-            font-size: 2rem;
-            margin-bottom: 0.8rem;
-            color: var(--color-guinda);
-        }
-
-        .hero-texto p {
-            color: var(--color-gris-texto);
-            margin-bottom: 1.2rem;
-            max-width: 600px;
-        }
-
-        .hero-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-
-        .hero-badge {
-            background: #fff;
-            border: 1px solid rgba(99,26,36,0.10);
-            color: var(--color-oscuro);
-            padding: 0.7rem 1rem;
-            border-radius: 999px;
-            font-size: 0.88rem;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-        }
-
-        .hero-card {
-            background: var(--color-oscuro);
-            color: var(--color-crema);
-            border-radius: 16px;
-            padding: 1.5rem;
-            box-shadow: var(--sombra-fuerte);
-        }
-
-        .hero-card h3 {
-            margin-bottom: 0.8rem;
-            color: var(--color-dorado);
-        }
-
-        .hero-card ul {
-            list-style: none;
-            display: grid;
-            gap: 0.65rem;
-            font-size: 0.95rem;
-        }
-
-        /* ENTREGAS */
-
-        .barra-entregas {
-            background-color: var(--color-oscuro);
-            color: var(--color-crema);
-            text-align: center;
-            padding: 0.8rem 1rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border-top: 1px solid rgba(255,255,255,0.06);
-            border-bottom: 4px solid var(--color-guinda);
-            letter-spacing: 0.5px;
-            margin-top: 2rem;
-        }
-
-        /* BUSCADOR */
-
-        .contenedor-buscador {
-            max-width: 600px;
-            margin: 2rem auto 0;
-            padding: 0 1rem;
-            animation: fadeUp 1.2s ease;
-        }
-
-        .input-buscador {
-            width: 100%;
-            padding: 0.95rem 1.2rem;
-            border: 2px solid var(--color-gris-claro);
-            border-radius: 999px;
-            font-size: 1rem;
-            outline: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            background: #fff;
-        }
-
-        .input-buscador:focus {
-            border-color: var(--color-guinda);
-            transform: scale(1.01);
-            box-shadow: 0 8px 18px rgba(99,26,36,0.12);
-        }
-
-        /* TITULO */
-
-        .titulo-seccion {
-            max-width: 1200px;
-            margin: 2.2rem auto 0;
-            padding: 0 1rem;
-            text-align: center;
-        }
-
-        .titulo-seccion h2 {
-            color: var(--color-guinda);
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .titulo-seccion p {
-            color: var(--color-gris-texto);
-            font-size: 0.95rem;
-        }
-
-        /* CATALOGO */
-
-        .catalogo {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .tarjeta-producto {
-            position: relative;
-            min-height: 470px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--sombra-suave);
-            opacity: 0;
-            transform: translateY(30px) scale(0.98);
-            transition:
-                opacity 0.7s ease,
-                transform 0.7s ease,
-                box-shadow 0.4s ease;
-            background: #000;
-        }
-
-        .tarjeta-producto.visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        .tarjeta-producto:hover {
-            transform: translateY(-10px) scale(1.01);
-            box-shadow: var(--sombra-fuerte);
-        }
-
-        .imagen-contenedor {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-        }
-
-        .imagen-contenedor img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-
-        .tarjeta-producto:hover .imagen-contenedor img {
-            transform: scale(1.1);
-        }
-
-        .overlay-galeria {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                to top,
-                rgba(0,0,0,0.88) 0%,
-                rgba(0,0,0,0.60) 35%,
-                rgba(0,0,0,0.18) 65%,
-                rgba(0,0,0,0.05) 100%
-            );
-        }
-
-        .badge-producto {
-            position: absolute;
-            top: 16px;
-            left: 16px;
-            z-index: 3;
-            background: var(--color-guinda);
-            color: #fff;
-            padding: 0.5rem 0.85rem;
-            border-radius: 999px;
-            font-size: 0.74rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            box-shadow: 0 6px 16px rgba(99,26,36,0.22);
-        }
-
-        .contenido-galeria {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 3;
-            padding: 1.4rem;
-            color: #fff;
-        }
-
-        .contenido-galeria h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.45rem;
-            line-height: 1.3;
-        }
-
-        .precio {
-            font-size: 1.45rem;
-            color: var(--color-dorado);
-            font-weight: 800;
-            margin-bottom: 0.55rem;
-        }
-
-        .tallas-contenedor {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.88);
-            margin-bottom: 0.7rem;
-            text-transform: uppercase;
-        }
-
-        .tallas-contenedor span {
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .detalle-extra {
-            font-size: 0.88rem;
-            color: rgba(255,255,255,0.86);
-            margin-bottom: 1rem;
-        }
-
-        .acciones-producto {
-            display: flex;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-        }
-
-        .btn-instagram,
-        .btn-whatsapp {
-            border: none;
-            cursor: pointer;
-            padding: 0.85rem 1rem;
-            border-radius: 10px;
-            font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            text-transform: uppercase;
-            font-size: 0.82rem;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-instagram {
-            background: #fff;
-            color: var(--color-oscuro);
-        }
-
-        .btn-instagram:hover {
-            background: var(--color-guinda);
-            color: #fff;
-            transform: translateY(-2px);
-        }
-
-        .btn-whatsapp {
-            background: #25D366;
-            color: #fff;
-        }
-
-        .btn-whatsapp:hover {
-            background: #1ebe5d;
-            transform: translateY(-2px);
-        }
-
-        .sin-resultados {
-            display: none;
-            max-width: 1200px;
-            margin: -0.5rem auto 2rem;
-            padding: 0 1rem;
-            text-align: center;
-            color: var(--color-gris-texto);
-            font-weight: 600;
-        }
-
-        /* BENEFICIOS */
-
-        .beneficios,
-        .testimonios {
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 0 1rem;
-        }
-
-        .beneficios h2,
-        .testimonios h2 {
-            text-align: center;
-            color: var(--color-guinda);
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .grid-beneficios,
-        .grid-testimonios {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 1.2rem;
-        }
-
-        .beneficio-card {
-            background: #fff;
-            border-radius: 16px;
-            padding: 1.4rem;
-            box-shadow: var(--sombra-suave);
-            border: 1px solid rgba(99,26,36,0.08);
-        }
-
-        .beneficio-card h3 {
-            color: var(--color-guinda);
-            margin-bottom: 0.55rem;
-            font-size: 1rem;
-        }
-
-        .beneficio-card p,
-        .testimonio p {
-            color: var(--color-gris-texto);
-            font-size: 0.92rem;
-        }
-
-        .testimonio {
-            background: #fff;
-            border-left: 4px solid var(--color-guinda);
-            border-radius: 12px;
-            padding: 1.2rem;
-            box-shadow: var(--sombra-suave);
-        }
-
-        .testimonio p {
-            margin-bottom: 0.7rem;
-            font-size: 0.94rem;
-        }
-
-        /* FOOTER */
-
-        footer {
-            background-color: var(--color-oscuro);
-            color: var(--color-crema);
-            margin-top: 3rem;
-            padding: 2rem 1rem;
-        }
-
-        .footer-contenido {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .footer-col h3 {
-            color: var(--color-dorado);
-            margin-bottom: 0.7rem;
-        }
-
-        .footer-col p,
-        .footer-col a {
-            color: rgba(253,251,247,0.9);
-            font-size: 0.92rem;
-            margin-bottom: 0.45rem;
-            display: block;
-        }
-
-        .footer-copy {
-            text-align: center;
-            margin-top: 1.5rem;
-            font-size: 0.85rem;
-            opacity: 0.85;
-        }
-
-        /* POPUP PROMOCION */
-
-        .popup-promocion {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            background: rgba(0,0,0,0.78);
-            backdrop-filter: blur(4px);
-        }
-
-        .popup-promocion.oculto {
-            display: none;
-        }
-
-        .popup-contenido {
-            position: relative;
-            width: min(92vw,520px);
-            max-height: 90vh;
-        }
-
-        .popup-contenido img {
-            display: block;
-            width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-            border-radius: 16px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.45);
-        }
-
-        .cerrar-popup {
-            position: absolute;
-            top: -14px;
-            right: -14px;
-            width: 42px;
-            height: 42px;
-            border: none;
-            border-radius: 50%;
-            background: #fff;
-            color: #1E1E1E;
-            font-size: 1.5rem;
-            font-weight: 800;
-            cursor: pointer;
-            z-index: 2;
-        }
-
-        /* =========================
-           MODAL DE PEDIDO
-        ========================= */
-
-        .modal-pedido {
-            position: fixed;
-            inset: 0;
-            z-index: 10000;
-            background: rgba(0,0,0,0.78);
-            backdrop-filter: blur(5px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            opacity: 1;
-            visibility: visible;
-            transition: opacity 0.25s ease, visibility 0.25s ease;
-        }
-
-        .modal-pedido.oculto {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        .modal-caja {
-            width: min(94vw, 470px);
-            max-height: 92vh;
-            overflow-y: auto;
-            background: #fff;
-            border-radius: 20px;
-            padding: 1.5rem;
-            box-shadow: 0 25px 70px rgba(0,0,0,0.35);
-            position: relative;
-            animation: modalEntrada 0.25s ease;
-        }
-
-        .modal-caja h2 {
-            color: var(--color-guinda);
-            margin-bottom: 0.25rem;
-            padding-right: 35px;
-        }
-
-        .modal-subtitulo {
-            color: var(--color-gris-texto);
-            font-size: 0.9rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .cerrar-modal {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            width: 38px;
-            height: 38px;
-            border: none;
-            border-radius: 50%;
-            background: var(--color-gris-claro);
-            color: var(--color-oscuro);
-            font-size: 1.4rem;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .producto-resumen {
-            background: var(--color-crema);
-            border: 1px solid var(--color-gris-claro);
-            border-radius: 13px;
-            padding: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .producto-resumen strong {
-            display: block;
-            color: var(--color-guinda);
-            margin-bottom: 0.2rem;
-        }
-
-        .producto-resumen span {
-            color: var(--color-gris-texto);
-            font-size: 0.9rem;
-        }
-
-        .campo-formulario {
-            margin-bottom: 1rem;
-        }
-
-        .campo-formulario label {
-            display: block;
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 0.4rem;
-            color: var(--color-oscuro);
-        }
-
-        .campo-formulario input,
-        .campo-formulario select,
-        .campo-formulario textarea {
-            width: 100%;
-            border: 2px solid var(--color-gris-claro);
-            border-radius: 11px;
-            padding: 0.85rem;
-            font-size: 1rem;
-            outline: none;
-            background: #fff;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .campo-formulario input:focus,
-        .campo-formulario select:focus,
-        .campo-formulario textarea:focus {
-            border-color: var(--color-guinda);
-            box-shadow: 0 0 0 3px rgba(99,26,36,0.08);
-        }
-
-        .campo-formulario textarea {
-            resize: vertical;
-            min-height: 90px;
-        }
-
-        .boton-generar {
-            width: 100%;
-            border: none;
-            border-radius: 12px;
-            padding: 1rem;
-            color: #fff;
-            font-weight: 800;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .boton-generar:hover {
-            transform: translateY(-2px);
-        }
-
-        .boton-whatsapp-modal {
-            background: #25D366;
-            box-shadow: 0 8px 20px rgba(37,211,102,0.22);
-        }
-
-        .boton-instagram-modal {
-            background: linear-gradient(135deg,#833AB4,#E1306C,#F77737);
-            box-shadow: 0 8px 20px rgba(225,48,108,0.22);
-        }
-
-        .aviso-instagram {
-            margin-top: 0.8rem;
-            padding: 0.8rem;
-            border-radius: 10px;
-            background: #f8f5f7;
-            color: var(--color-gris-texto);
-            font-size: 0.8rem;
-            text-align: center;
-        }
-
-        /* CONFIRMACION */
-
-        .mensaje-copiado {
-            position: fixed;
-            left: 50%;
-            bottom: 25px;
-            transform: translateX(-50%) translateY(20px);
-            background: var(--color-oscuro);
-            color: #fff;
-            padding: 0.85rem 1.2rem;
-            border-radius: 999px;
-            z-index: 11000;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s ease;
-            font-size: 0.88rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-
-        .mensaje-copiado.mostrar {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        /* ANIMACIONES */
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(25px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeDown {
-            from {
-                opacity: 0;
-                transform: translateY(-25px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes floatSoft {
-            0%,100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-6px);
-            }
-        }
-
-        @keyframes modalEntrada {
-            from {
-                opacity: 0;
-                transform: scale(0.94) translateY(15px);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        @media (max-width:900px) {
-            .hero-box {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width:768px) {
-
-            .logo-tienda {
-                width: 110px;
-                height: 110px;
-            }
-
-            header h1 {
-                font-size: 1.6rem;
-            }
-
-            .hero-texto h2 {
-                font-size: 1.55rem;
-            }
-
-            .tarjeta-producto {
-                min-height: 430px;
-            }
-
-            .barra-entregas {
-                font-size: 0.78rem;
-                padding: 0.7rem;
-            }
-
-            .top-bar {
-                gap: 0.8rem;
-                font-size: 0.75rem;
-            }
-
-            .acciones-producto {
-                flex-direction: column;
-            }
-
-            .btn-instagram,
-            .btn-whatsapp {
-                width: 100%;
-            }
-
-            .modal-caja {
-                padding: 1.2rem;
-            }
-        }
-
-    </style>
+<style>
+
+:root {
+    --guinda: #631A24;
+    --guinda-oscuro: #420E15;
+    --negro: #0B0B0B;
+    --negro-2: #151515;
+    --gris-oscuro: #252525;
+    --gris: #E5E5E5;
+    --gris-claro: #F2F2F2;
+    --blanco: #FFFFFF;
+    --texto: #171717;
+    --texto-gris: #666666;
+    --dorado: #C8A96B;
+
+    --sombra: 0 5px 15px rgba(0,0,0,.12);
+    --sombra-fuerte: 0 12px 30px rgba(0,0,0,.20);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background: #F1F1F1;
+    color: var(--texto);
+    line-height: 1.5;
+}
+
+body::selection {
+    background: var(--guinda);
+    color: #fff;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ==================================================
+   BARRA SUPERIOR
+================================================== */
+
+.top-bar {
+    background: var(--negro);
+    color: #fff;
+
+    min-height: 38px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1.5rem;
+    flex-wrap: wrap;
+
+    padding: .55rem 1rem;
+
+    font-size: .76rem;
+    font-weight: 800;
+
+    letter-spacing: .4px;
+
+    border-bottom: 3px solid var(--guinda);
+}
+
+.top-bar span {
+    white-space: nowrap;
+}
+
+/* ==================================================
+   HEADER SPORTING
+================================================== */
+
+header {
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--guinda) 0%,
+            var(--guinda) 55%,
+            var(--negro) 55%,
+            var(--negro) 100%
+        );
+
+    color: #fff;
+
+    text-align: center;
+
+    padding: 2.5rem 1rem 2.7rem;
+
+    border-bottom: 6px solid var(--negro);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: .7rem;
+
+    animation: fadeDown .7s ease;
+}
+
+/* DIAGONALES DEPORTIVAS */
+
+header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 240px;
+    height: 500px;
+
+    right: -100px;
+    top: -100px;
+
+    background: rgba(255,255,255,.055);
+
+    transform: rotate(28deg);
+}
+
+header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 160px;
+    height: 500px;
+
+    left: -80px;
+    top: -100px;
+
+    background: rgba(0,0,0,.13);
+
+    transform: rotate(28deg);
+}
+
+.logo-tienda {
+    position: relative;
+    z-index: 2;
+
+    width: 125px;
+    height: 125px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 4px solid #fff;
+
+    box-shadow:
+        0 7px 0 rgba(0,0,0,.3),
+        0 15px 30px rgba(0,0,0,.35);
+
+    animation: floatSoft 4s ease-in-out infinite;
+}
+
+header h1 {
+    position: relative;
+    z-index: 2;
+
+    font-size: 2rem;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+header p {
+    position: relative;
+    z-index: 2;
+
+    font-size: .82rem;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+/* ==================================================
+   HERO
+================================================== */
+
+.hero {
+    max-width: 1200px;
+
+    margin: 1.8rem auto 0;
+
+    padding: 0 1rem;
+
+    animation: fadeUp .8s ease;
+}
+
+.hero-box {
+    position: relative;
+    overflow: hidden;
+
+    background: #fff;
+
+    border: 1px solid #D7D7D7;
+
+    border-left: 7px solid var(--guinda);
+
+    border-radius: 4px;
+
+    padding: 2rem;
+
+    box-shadow: var(--sombra);
+
+    display: grid;
+
+    grid-template-columns: 1.25fr .75fr;
+
+    gap: 2rem;
+
+    align-items: center;
+}
+
+.hero-box::after {
+    content: "";
+
+    position: absolute;
+
+    right: -80px;
+    bottom: -100px;
+
+    width: 250px;
+    height: 250px;
+
+    border: 35px solid rgba(99,26,36,.045);
+
+    transform: rotate(25deg);
+}
+
+.hero-texto {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-texto h2 {
+    color: var(--texto);
+
+    font-size: 2rem;
+
+    line-height: 1.05;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    margin-bottom: .8rem;
+}
+
+.hero-texto h2::first-line {
+    color: var(--guinda);
+}
+
+.hero-texto p {
+    color: var(--texto-gris);
+
+    max-width: 650px;
+
+    margin-bottom: 1.2rem;
+
+    font-size: .94rem;
+}
+
+.hero-badges {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: .5rem;
+}
+
+.hero-badge {
+    background: var(--gris-claro);
+
+    border: 1px solid #D9D9D9;
+
+    color: var(--texto);
+
+    padding: .55rem .8rem;
+
+    border-radius: 3px;
+
+    font-size: .78rem;
+
+    font-weight: 800;
+}
+
+.hero-card {
+    position: relative;
+    z-index: 2;
+
+    background: var(--negro);
+
+    color: #fff;
+
+    border-radius: 4px;
+
+    padding: 1.5rem;
+
+    border-top: 5px solid var(--guinda);
+
+    box-shadow: var(--sombra-fuerte);
+}
+
+.hero-card h3 {
+    color: #fff;
+
+    font-size: 1rem;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    margin-bottom: .9rem;
+
+    letter-spacing: .6px;
+}
+
+.hero-card ul {
+    list-style: none;
+
+    display: grid;
+
+    gap: .65rem;
+
+    font-size: .88rem;
+}
+
+.hero-card li {
+    padding-bottom: .55rem;
+
+    border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+/* ==================================================
+   ENTREGAS
+================================================== */
+
+.barra-entregas {
+    background: var(--guinda);
+
+    color: #fff;
+
+    text-align: center;
+
+    padding: .75rem 1rem;
+
+    font-size: .8rem;
+
+    font-weight: 900;
+
+    letter-spacing: .4px;
+
+    border-bottom: 5px solid var(--negro);
+
+    margin-top: 1.8rem;
+}
+
+/* ==================================================
+   BUSCADOR
+================================================== */
+
+.contenedor-buscador {
+    max-width: 650px;
+
+    margin: 1.8rem auto 0;
+
+    padding: 0 1rem;
+}
+
+.input-buscador {
+    width: 100%;
+
+    padding: .95rem 1.1rem;
+
+    background: #fff;
+
+    border: 2px solid #D6D6D6;
+
+    border-radius: 4px;
+
+    outline: none;
+
+    font-size: .95rem;
+
+    box-shadow: var(--sombra);
+
+    transition: .2s ease;
+}
+
+.input-buscador:focus {
+    border-color: var(--guinda);
+
+    box-shadow:
+        0 0 0 3px rgba(99,26,36,.08);
+}
+
+.input-buscador::placeholder {
+    color: #999;
+}
+
+/* ==================================================
+   TITULO CATALOGO
+================================================== */
+
+.titulo-seccion {
+    max-width: 1200px;
+
+    margin: 2.5rem auto 0;
+
+    padding: 0 1rem;
+
+    text-align: center;
+}
+
+.titulo-seccion h2 {
+    color: var(--texto);
+
+    font-size: 1.8rem;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+}
+
+.titulo-seccion h2::after {
+    content: "";
+
+    display: block;
+
+    width: 55px;
+
+    height: 5px;
+
+    background: var(--guinda);
+
+    margin: .55rem auto .65rem;
+
+    transform: skewX(-25deg);
+}
+
+.titulo-seccion p {
+    color: var(--texto-gris);
+
+    font-size: .88rem;
+}
+
+/* ==================================================
+   CATALOGO
+================================================== */
+
+.catalogo {
+    max-width: 1200px;
+
+    margin: 1.8rem auto 2.5rem;
+
+    padding: 0 1rem;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(290px, 1fr));
+
+    gap: 1.3rem;
+}
+
+.tarjeta-producto {
+    position: relative;
+
+    min-height: 470px;
+
+    overflow: hidden;
+
+    border-radius: 4px;
+
+    background: #111;
+
+    border: 1px solid #222;
+
+    box-shadow: var(--sombra);
+
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    transition:
+        opacity .5s ease,
+        transform .5s ease,
+        box-shadow .3s ease;
+}
+
+.tarjeta-producto.visible {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-6px);
+
+    box-shadow: var(--sombra-fuerte);
+}
+
+.imagen-contenedor {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+}
+
+.imagen-contenedor img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform .55s ease;
+}
+
+.tarjeta-producto:hover .imagen-contenedor img {
+    transform: scale(1.045);
+}
+
+.overlay-galeria {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.96) 0%,
+            rgba(0,0,0,.78) 30%,
+            rgba(0,0,0,.28) 62%,
+            rgba(0,0,0,.02) 100%
+        );
+}
+
+.badge-producto {
+    position: absolute;
+
+    top: 14px;
+    left: 14px;
+
+    z-index: 3;
+
+    background: var(--guinda);
+
+    color: #fff;
+
+    padding: .42rem .7rem;
+
+    border-radius: 3px;
+
+    font-size: .69rem;
+
+    font-weight: 900;
+
+    letter-spacing: .7px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,.25);
+}
+
+.contenido-galeria {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 3;
+
+    padding: 1.15rem;
+}
+
+.contenido-galeria h3 {
+    color: #fff;
+
+    font-size: 1.13rem;
+
+    font-weight: 900;
+
+    line-height: 1.2;
+
+    margin-bottom: .35rem;
+}
+
+.precio {
+    color: #fff;
+
+    font-size: 1.45rem;
+
+    font-weight: 900;
+
+    margin-bottom: .4rem;
+}
+
+.tallas-contenedor {
+    color: rgba(255,255,255,.75);
+
+    font-size: .78rem;
+
+    text-transform: uppercase;
+
+    margin-bottom: .5rem;
+}
+
+.tallas-contenedor span {
+    color: #fff;
+
+    font-weight: 900;
+}
+
+.detalle-extra {
+    color: rgba(255,255,255,.82);
+
+    font-size: .81rem;
+
+    margin-bottom: .85rem;
+}
+
+/* ==================================================
+   BOTONES PRODUCTO
+================================================== */
+
+.acciones-producto {
+    display: flex;
+
+    gap: .5rem;
+
+    flex-wrap: wrap;
+}
+
+.btn-instagram,
+.btn-whatsapp {
+    border: none;
+
+    cursor: pointer;
+
+    padding: .72rem .8rem;
+
+    border-radius: 3px;
+
+    font-weight: 900;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: .4rem;
+
+    text-transform: uppercase;
+
+    font-size: .73rem;
+
+    transition: .2s ease;
+}
+
+.btn-instagram {
+    background: #fff;
+
+    color: var(--negro);
+}
+
+.btn-instagram:hover {
+    background: #EAEAEA;
+
+    transform: translateY(-2px);
+}
+
+.btn-whatsapp {
+    background: #25D366;
+
+    color: #fff;
+}
+
+.btn-whatsapp:hover {
+    background: #1EBE5D;
+
+    transform: translateY(-2px);
+}
+
+.sin-resultados {
+    display: none;
+
+    text-align: center;
+
+    color: var(--texto-gris);
+
+    font-weight: 800;
+
+    padding: 1rem;
+}
+
+/* ==================================================
+   BENEFICIOS
+================================================== */
+
+.beneficios,
+.testimonios {
+    max-width: 1200px;
+
+    margin: 3.5rem auto;
+
+    padding: 0 1rem;
+}
+
+.beneficios h2,
+.testimonios h2 {
+    text-align: center;
+
+    color: var(--texto);
+
+    font-size: 1.65rem;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    margin-bottom: 1.5rem;
+}
+
+.beneficios h2::after,
+.testimonios h2::after {
+    content: "";
+
+    display: block;
+
+    width: 50px;
+
+    height: 5px;
+
+    background: var(--guinda);
+
+    margin: .55rem auto 0;
+
+    transform: skewX(-25deg);
+}
+
+.grid-beneficios,
+.grid-testimonios {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(230px, 1fr));
+
+    gap: 1rem;
+}
+
+.beneficio-card {
+    background: #fff;
+
+    border: 1px solid #D8D8D8;
+
+    border-top: 5px solid var(--guinda);
+
+    border-radius: 3px;
+
+    padding: 1.3rem;
+
+    box-shadow: var(--sombra);
+
+    transition: .25s ease;
+}
+
+.beneficio-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow: var(--sombra-fuerte);
+}
+
+.beneficio-card h3 {
+    color: var(--guinda);
+
+    font-size: .95rem;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    margin-bottom: .5rem;
+}
+
+.beneficio-card p,
+.testimonio p {
+    color: var(--texto-gris);
+
+    font-size: .88rem;
+}
+
+/* ==================================================
+   TESTIMONIOS
+================================================== */
+
+.testimonio {
+    background: #fff;
+
+    border: 1px solid #D8D8D8;
+
+    border-left: 5px solid var(--guinda);
+
+    border-radius: 3px;
+
+    padding: 1.2rem;
+
+    box-shadow: var(--sombra);
+}
+
+.testimonio p {
+    margin-bottom: .7rem;
+}
+
+.testimonio strong {
+    font-size: .8rem;
+}
+
+/* ==================================================
+   FOOTER
+================================================== */
+
+footer {
+    background: var(--negro);
+
+    color: #fff;
+
+    margin-top: 4rem;
+
+    padding: 2.5rem 1rem 1.5rem;
+
+    border-top: 6px solid var(--guinda);
+}
+
+.footer-contenido {
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 2rem;
+}
+
+.footer-col h3 {
+    color: #fff;
+
+    font-size: .92rem;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    margin-bottom: .7rem;
+}
+
+.footer-col h3::after {
+    content: "";
+
+    display: block;
+
+    width: 28px;
+
+    height: 3px;
+
+    background: var(--guinda);
+
+    margin-top: .35rem;
+}
+
+.footer-col p,
+.footer-col a {
+    color: rgba(255,255,255,.72);
+
+    font-size: .86rem;
+
+    margin-bottom: .45rem;
+
+    display: block;
+}
+
+.footer-col a:hover {
+    color: #fff;
+}
+
+.footer-copy {
+    text-align: center;
+
+    margin-top: 2rem;
+
+    padding-top: 1rem;
+
+    border-top: 1px solid rgba(255,255,255,.1);
+
+    color: rgba(255,255,255,.5);
+
+    font-size: .76rem;
+}
+
+/* ==================================================
+   POPUP
+================================================== */
+
+.popup-promocion {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 1rem;
+
+    background: rgba(0,0,0,.84);
+
+    backdrop-filter: blur(3px);
+}
+
+.popup-promocion.oculto {
+    display: none;
+}
+
+.popup-contenido {
+    position: relative;
+
+    width: min(92vw,520px);
+
+    max-height: 90vh;
+}
+
+.popup-contenido img {
+    display: block;
+
+    width: 100%;
+
+    max-height: 90vh;
+
+    object-fit: contain;
+
+    border-radius: 4px;
+
+    box-shadow: 0 20px 50px rgba(0,0,0,.55);
+}
+
+.cerrar-popup {
+    position: absolute;
+
+    top: -13px;
+    right: -13px;
+
+    width: 40px;
+    height: 40px;
+
+    border: 3px solid var(--negro);
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    color: var(--negro);
+
+    font-size: 1.4rem;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    z-index: 2;
+}
+
+/* ==================================================
+   MODAL PEDIDO
+================================================== */
+
+.modal-pedido {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 10000;
+
+    background: rgba(0,0,0,.84);
+
+    backdrop-filter: blur(3px);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 1rem;
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transition:
+        opacity .25s ease,
+        visibility .25s ease;
+}
+
+.modal-pedido.oculto {
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+}
+
+.modal-caja {
+    width: min(94vw,470px);
+
+    max-height: 92vh;
+
+    overflow-y: auto;
+
+    background: #fff;
+
+    border-radius: 4px;
+
+    padding: 1.5rem;
+
+    box-shadow: 0 25px 70px rgba(0,0,0,.45);
+
+    position: relative;
+
+    border-top: 6px solid var(--guinda);
+
+    animation: modalEntrada .25s ease;
+}
+
+.modal-caja h2 {
+    color: var(--guinda);
+
+    margin-bottom: .25rem;
+
+    padding-right: 35px;
+
+    font-weight: 900;
+}
+
+.modal-subtitulo {
+    color: var(--texto-gris);
+
+    font-size: .88rem;
+
+    margin-bottom: 1.2rem;
+}
+
+.cerrar-modal {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    width: 36px;
+    height: 36px;
+
+    border: none;
+
+    border-radius: 3px;
+
+    background: #EAEAEA;
+
+    color: var(--negro);
+
+    font-size: 1.3rem;
+
+    font-weight: 900;
+
+    cursor: pointer;
+}
+
+.producto-resumen {
+    background: #F3F3F3;
+
+    border: 1px solid #D8D8D8;
+
+    border-left: 5px solid var(--guinda);
+
+    border-radius: 3px;
+
+    padding: .9rem;
+
+    margin-bottom: 1rem;
+}
+
+.producto-resumen strong {
+    display: block;
+
+    color: var(--guinda);
+
+    margin-bottom: .25rem;
+}
+
+.producto-resumen span {
+    display: block;
+
+    color: var(--texto-gris);
+
+    font-size: .87rem;
+
+    margin-top: .15rem;
+}
+
+.campo-formulario {
+    margin-bottom: 1rem;
+}
+
+.campo-formulario label {
+    display: block;
+
+    font-weight: 900;
+
+    font-size: .84rem;
+
+    margin-bottom: .4rem;
+}
+
+.campo-formulario input,
+.campo-formulario select,
+.campo-formulario textarea {
+    width: 100%;
+
+    border: 2px solid #D8D8D8;
+
+    border-radius: 4px;
+
+    padding: .82rem;
+
+    font-size: .95rem;
+
+    outline: none;
+
+    background: #fff;
+
+    transition: .2s ease;
+}
+
+.campo-formulario input:focus,
+.campo-formulario select:focus,
+.campo-formulario textarea:focus {
+    border-color: var(--guinda);
+
+    box-shadow:
+        0 0 0 3px rgba(99,26,36,.08);
+}
+
+.campo-formulario textarea {
+    resize: vertical;
+
+    min-height: 90px;
+}
+
+.boton-generar {
+    width: 100%;
+
+    border: none;
+
+    border-radius: 4px;
+
+    padding: 1rem;
+
+    color: #fff;
+
+    font-weight: 900;
+
+    font-size: .9rem;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.boton-generar:hover {
+    transform: translateY(-2px);
+}
+
+.boton-whatsapp-modal {
+    background: #25D366;
+
+    box-shadow:
+        0 6px 15px rgba(37,211,102,.2);
+}
+
+.boton-instagram-modal {
+    background:
+        linear-gradient(
+            135deg,
+            #833AB4,
+            #E1306C,
+            #F77737
+        );
+}
+
+.aviso-instagram {
+    margin-top: .8rem;
+
+    padding: .75rem;
+
+    border-radius: 3px;
+
+    background: #F1F1F1;
+
+    color: var(--texto-gris);
+
+    font-size: .78rem;
+
+    text-align: center;
+}
+
+/* ==================================================
+   MENSAJE COPIADO
+================================================== */
+
+.mensaje-copiado {
+    position: fixed;
+
+    left: 50%;
+    bottom: 25px;
+
+    transform:
+        translateX(-50%)
+        translateY(20px);
+
+    background: var(--negro);
+
+    color: #fff;
+
+    padding: .8rem 1.15rem;
+
+    border-radius: 4px;
+
+    border-left: 4px solid var(--guinda);
+
+    z-index: 11000;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: .3s ease;
+
+    font-size: .82rem;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,.3);
+
+    text-align: center;
+}
+
+.mensaje-copiado.mostrar {
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+/* ==================================================
+   ANIMACIONES
+================================================== */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatSoft {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+@keyframes modalEntrada {
+    from {
+        opacity: 0;
+        transform: scale(.97) translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+@media (max-width:900px) {
+
+    .hero-box {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width:768px) {
+
+    .top-bar {
+        gap: .5rem 1rem;
+
+        font-size: .69rem;
+    }
+
+    header {
+        padding: 2rem 1rem 2.3rem;
+    }
+
+    .logo-tienda {
+        width: 105px;
+        height: 105px;
+    }
+
+    header h1 {
+        font-size: 1.45rem;
+    }
+
+    header p {
+        font-size: .7rem;
+    }
+
+    .hero {
+        margin-top: 1.2rem;
+    }
+
+    .hero-box {
+        padding: 1.3rem;
+
+        border-left-width: 5px;
+    }
+
+    .hero-texto h2 {
+        font-size: 1.45rem;
+    }
+
+    .hero-texto p {
+        font-size: .86rem;
+    }
+
+    .hero-card {
+        padding: 1.2rem;
+    }
+
+    .barra-entregas {
+        font-size: .74rem;
+    }
+
+    .catalogo {
+        grid-template-columns: 1fr;
+
+        gap: 1.1rem;
+    }
+
+    .tarjeta-producto {
+        min-height: 450px;
+    }
+
+    .acciones-producto {
+        flex-direction: column;
+    }
+
+    .btn-instagram,
+    .btn-whatsapp {
+        width: 100%;
+    }
+
+    .beneficios,
+    .testimonios {
+        margin: 2.5rem auto;
+    }
+
+    .modal-caja {
+        padding: 1.2rem;
+    }
+}
+
+</style>
 </head>
 
 <body>
@@ -880,18 +1480,25 @@
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-
-<!-- BARRA SUPERIOR -->
+<!-- ==================================================
+     BARRA SUPERIOR
+================================================== -->
 
 <div class="top-bar">
+
     <span>🚚 Entregas en CDMX</span>
+
     <span>✅ Jerseys premium</span>
+
     <span>📩 Atención por Instagram y WhatsApp</span>
+
     <span>🔥 Modelos exclusivos</span>
+
 </div>
 
-
-<!-- HEADER -->
+<!-- ==================================================
+     HEADER
+================================================== -->
 
 <header>
 
@@ -907,8 +1514,9 @@
 
 </header>
 
-
-<!-- HERO -->
+<!-- ==================================================
+     HERO
+================================================== -->
 
 <section class="hero">
 
@@ -916,20 +1524,36 @@
 
         <div class="hero-texto">
 
-            <h2>Jerseys con estilo, calidad y presencia</h2>
+            <h2>
+                Jerseys con estilo,
+                calidad y presencia
+            </h2>
 
             <p>
-                Encuentra modelos de clubes y selecciones con diseño premium,
-                excelente presentación y entregas en CDMX.
-                Una tienda pensada para quienes viven el fútbol con identidad.
+                Encuentra modelos de clubes y selecciones
+                con diseño premium, excelente presentación
+                y entregas en CDMX.
+                Una tienda pensada para quienes viven
+                el fútbol con identidad.
             </p>
 
             <div class="hero-badges">
 
-                <span class="hero-badge">⚽ Clubes y selecciones</span>
-                <span class="hero-badge">📍 Entregas personales</span>
-                <span class="hero-badge">🔥 Piezas destacadas</span>
-                <span class="hero-badge">📱 Pedidos por WhatsApp</span>
+                <span class="hero-badge">
+                    ⚽ Clubes y selecciones
+                </span>
+
+                <span class="hero-badge">
+                    📍 Entregas personales
+                </span>
+
+                <span class="hero-badge">
+                    🔥 Piezas destacadas
+                </span>
+
+                <span class="hero-badge">
+                    📱 Pedidos por WhatsApp
+                </span>
 
             </div>
 
@@ -940,10 +1564,15 @@
             <h3>¿Por qué elegir Báifo?</h3>
 
             <ul>
+
                 <li>✔ Atención rápida y directa</li>
+
                 <li>✔ Diseños que destacan</li>
+
                 <li>✔ Calidad premium</li>
+
                 <li>✔ Entregas en puntos de encuentro</li>
+
             </ul>
 
         </div>
@@ -952,19 +1581,23 @@
 
 </section>
 
-
-<!-- ENTREGAS -->
+<!-- ==================================================
+     ENTREGAS
+================================================== -->
 
 <div class="barra-entregas">
 
     🚇 Entregas en CDMX
+
     <br>
+
     (Líneas 2, 3 y 5 del Metro, y puntos de encuentro)
 
 </div>
 
-
-<!-- BUSCADOR -->
+<!-- ==================================================
+     BUSCADOR
+================================================== -->
 
 <div class="contenedor-buscador">
 
@@ -972,14 +1605,15 @@
         type="text"
         id="buscador"
         class="input-buscador"
-        placeholder="Búsqueda personalizada: jersey, equipo o selección..."
+        placeholder="Buscar jersey, equipo o selección..."
         aria-label="Búsqueda personalizada"
     >
 
 </div>
 
-
-<!-- TITULO -->
+<!-- ==================================================
+     TITULO
+================================================== -->
 
 <section class="titulo-seccion">
 
@@ -992,386 +1626,417 @@
 
 </section>
 
-
-<!-- CATALOGO -->
+<!-- ==================================================
+     CATALOGO
+================================================== -->
 
 <section class="catalogo" id="catalogo">
 
+<!-- PRODUCTO 1 -->
 
-    <!-- PRODUCTO 1 -->
+<div
+    class="tarjeta-producto"
+    data-producto="Real Madrid (Playera Alternativa Rosa)"
+    data-precio="400"
+    data-tallas="G, XL, XXL"
+    data-detalle="Diseño alternativo con una presencia distinta y moderna."
+>
 
-    <div
-        class="tarjeta-producto"
-        data-producto="Real Madrid (Playera Alternativa Rosa)"
-        data-precio="400"
-        data-tallas="G, XL, XXL"
-        data-detalle="Diseño alternativo con una presencia distinta y moderna."
-    >
+    <span class="badge-producto">
+        NUEVO
+    </span>
 
-        <span class="badge-producto">NUEVO</span>
+    <div class="imagen-contenedor">
 
-        <div class="imagen-contenedor">
+        <img
+            src="https://i.postimg.cc/xTmxsK9J/e3f8fad5-21ab-48fd-8b95-94cf4eb49d94.jpg"
+            alt="Real Madrid Playera Alternativa Rosa"
+        >
 
-            <img
-                src="https://i.postimg.cc/xTmxsK9J/e3f8fad5-21ab-48fd-8b95-94cf4eb49d94.jpg"
-                alt="Real Madrid Playera Alternativa Rosa"
-            >
+    </div>
 
+    <div class="overlay-galeria"></div>
+
+    <div class="contenido-galeria">
+
+        <h3>
+            Real Madrid (Playera Alternativa Rosa)
+        </h3>
+
+        <p class="precio">
+            $400.00
+        </p>
+
+        <div class="tallas-contenedor">
+            Tallas:
+            <span>G, XL, XXL</span>
         </div>
 
-        <div class="overlay-galeria"></div>
+        <p class="detalle-extra">
+            Diseño alternativo con una presencia distinta y moderna.
+        </p>
 
-        <div class="contenido-galeria">
+        <div class="acciones-producto">
 
-            <h3>Real Madrid (Playera Alternativa Rosa)</h3>
+            <button
+                class="btn-instagram"
+                onclick="abrirPedido(this, 'instagram')"
+            >
+                📸 Pedir por Instagram
+            </button>
 
-            <p class="precio">$400.00</p>
-
-            <div class="tallas-contenedor">
-                Tallas:
-                <span>G, XL, XXL</span>
-            </div>
-
-            <p class="detalle-extra">
-                Diseño alternativo con una presencia distinta y moderna.
-            </p>
-
-            <div class="acciones-producto">
-
-                <button
-                    class="btn-instagram"
-                    onclick="abrirPedido(this, 'instagram')"
-                >
-                    📸 Pedir por Instagram
-                </button>
-
-                <button
-                    class="btn-whatsapp"
-                    onclick="abrirPedido(this, 'whatsapp')"
-                >
-                    🟢 Pedir por WhatsApp
-                </button>
-
-            </div>
+            <button
+                class="btn-whatsapp"
+                onclick="abrirPedido(this, 'whatsapp')"
+            >
+                🟢 Pedir por WhatsApp
+            </button>
 
         </div>
 
     </div>
 
+</div>
 
-    <!-- PRODUCTO 2 -->
+<!-- PRODUCTO 2 -->
 
-    <div
-        class="tarjeta-producto"
-        data-producto="Real Madrid (Playera Local)"
-        data-precio="400"
-        data-tallas="S, M, G, XL, XXXL"
-        data-detalle="Una pieza clásica con fuerza visual y gran salida."
-    >
+<div
+    class="tarjeta-producto"
+    data-producto="Real Madrid (Playera Local)"
+    data-precio="400"
+    data-tallas="S, M, G, XL, XXXL"
+    data-detalle="Una pieza clásica con fuerza visual y gran salida."
+>
 
-        <span class="badge-producto">MÁS VENDIDO</span>
+    <span class="badge-producto">
+        MÁS VENDIDO
+    </span>
 
-        <div class="imagen-contenedor">
+    <div class="imagen-contenedor">
 
-            <img
-                src="https://i.postimg.cc/L6PCyzmg/6bd55d04-d6df-41b2-9240-3b4ef2b5b368.jpg"
-                alt="Real Madrid Playera Local"
-            >
+        <img
+            src="https://i.postimg.cc/L6PCyzmg/6bd55d04-d6df-41b2-9240-3b4ef2b5b368.jpg"
+            alt="Real Madrid Playera Local"
+        >
 
+    </div>
+
+    <div class="overlay-galeria"></div>
+
+    <div class="contenido-galeria">
+
+        <h3>
+            Real Madrid (Playera Local)
+        </h3>
+
+        <p class="precio">
+            $400.00
+        </p>
+
+        <div class="tallas-contenedor">
+            Tallas:
+            <span>S, M, G, XL, XXXL</span>
         </div>
 
-        <div class="overlay-galeria"></div>
+        <p class="detalle-extra">
+            Una pieza clásica con fuerza visual y gran salida.
+        </p>
 
-        <div class="contenido-galeria">
+        <div class="acciones-producto">
 
-            <h3>Real Madrid (Playera Local)</h3>
+            <button
+                class="btn-instagram"
+                onclick="abrirPedido(this, 'instagram')"
+            >
+                📸 Pedir por Instagram
+            </button>
 
-            <p class="precio">$400.00</p>
-
-            <div class="tallas-contenedor">
-                Tallas:
-                <span>S, M, G, XL, XXXL</span>
-            </div>
-
-            <p class="detalle-extra">
-                Una pieza clásica con fuerza visual y gran salida.
-            </p>
-
-            <div class="acciones-producto">
-
-                <button
-                    class="btn-instagram"
-                    onclick="abrirPedido(this, 'instagram')"
-                >
-                    📸 Pedir por Instagram
-                </button>
-
-                <button
-                    class="btn-whatsapp"
-                    onclick="abrirPedido(this, 'whatsapp')"
-                >
-                    🟢 Pedir por WhatsApp
-                </button>
-
-            </div>
+            <button
+                class="btn-whatsapp"
+                onclick="abrirPedido(this, 'whatsapp')"
+            >
+                🟢 Pedir por WhatsApp
+            </button>
 
         </div>
 
     </div>
 
+</div>
 
-    <!-- PRODUCTO 3 -->
+<!-- PRODUCTO 3 -->
 
-    <div
-        class="tarjeta-producto"
-        data-producto="Noruega Total Black"
-        data-precio="415"
-        data-tallas="S, M, G, XL, XXL"
-        data-detalle="Modelo sobrio, elegante y perfecto para destacar."
-    >
+<div
+    class="tarjeta-producto"
+    data-producto="Noruega Total Black"
+    data-precio="415"
+    data-tallas="S, M, G, XL, XXL"
+    data-detalle="Modelo sobrio, elegante y perfecto para destacar."
+>
 
-        <span class="badge-producto">EDICIÓN ESPECIAL</span>
+    <span class="badge-producto">
+        EDICIÓN ESPECIAL
+    </span>
 
-        <div class="imagen-contenedor">
+    <div class="imagen-contenedor">
 
-            <img
-                src="https://i.postimg.cc/m29XdQTF/22c67bcd-fb1c-4eaa-98d0-b6723c918edf.jpg"
-                alt="Noruega Total Black"
-            >
+        <img
+            src="https://i.postimg.cc/m29XdQTF/22c67bcd-fb1c-4eaa-98d0-b6723c918edf.jpg"
+            alt="Noruega Total Black"
+        >
 
+    </div>
+
+    <div class="overlay-galeria"></div>
+
+    <div class="contenido-galeria">
+
+        <h3>
+            Noruega Total Black
+        </h3>
+
+        <p class="precio">
+            $415.00
+        </p>
+
+        <div class="tallas-contenedor">
+            Tallas:
+            <span>S, M, G, XL, XXL</span>
         </div>
 
-        <div class="overlay-galeria"></div>
+        <p class="detalle-extra">
+            Modelo sobrio, elegante y perfecto para destacar.
+        </p>
 
-        <div class="contenido-galeria">
+        <div class="acciones-producto">
 
-            <h3>Noruega Total Black</h3>
+            <button
+                class="btn-instagram"
+                onclick="abrirPedido(this, 'instagram')"
+            >
+                📸 Pedir por Instagram
+            </button>
 
-            <p class="precio">$415.00</p>
-
-            <div class="tallas-contenedor">
-                Tallas:
-                <span>S, M, G, XL, XXL</span>
-            </div>
-
-            <p class="detalle-extra">
-                Modelo sobrio, elegante y perfecto para destacar.
-            </p>
-
-            <div class="acciones-producto">
-
-                <button
-                    class="btn-instagram"
-                    onclick="abrirPedido(this, 'instagram')"
-                >
-                    📸 Pedir por Instagram
-                </button>
-
-                <button
-                    class="btn-whatsapp"
-                    onclick="abrirPedido(this, 'whatsapp')"
-                >
-                    🟢 Pedir por WhatsApp
-                </button>
-
-            </div>
+            <button
+                class="btn-whatsapp"
+                onclick="abrirPedido(this, 'whatsapp')"
+            >
+                🟢 Pedir por WhatsApp
+            </button>
 
         </div>
 
     </div>
 
+</div>
 
-    <!-- PRODUCTO 4 -->
+<!-- PRODUCTO 4 -->
 
-    <div
-        class="tarjeta-producto"
-        data-producto="Brasil 1994 Retro"
-        data-precio="400"
-        data-tallas="S, M, G, XL, XXL"
-        data-detalle="Un clásico retro que representa la historia y el estilo de Brasil."
-    >
+<div
+    class="tarjeta-producto"
+    data-producto="Brasil 1994 Retro"
+    data-precio="400"
+    data-tallas="S, M, G, XL, XXL"
+    data-detalle="Un clásico retro que representa la historia y el estilo de Brasil."
+>
 
-        <span class="badge-producto">RETRO</span>
+    <span class="badge-producto">
+        RETRO
+    </span>
 
-        <div class="imagen-contenedor">
+    <div class="imagen-contenedor">
 
-            <img
-                src="https://i.postimg.cc/PqnGgBHg/726e1618-eefa-432f-9374-2a8b113d4d56.jpg"
-                alt="Brasil 1994 Retro"
-            >
+        <img
+            src="https://i.postimg.cc/PqnGgBHg/726e1618-eefa-432f-9374-2a8b113d4d56.jpg"
+            alt="Brasil 1994 Retro"
+        >
 
+    </div>
+
+    <div class="overlay-galeria"></div>
+
+    <div class="contenido-galeria">
+
+        <h3>
+            Brasil 1994 Retro
+        </h3>
+
+        <p class="precio">
+            $400.00
+        </p>
+
+        <div class="tallas-contenedor">
+            Tallas:
+            <span>S, M, G, XL, XXL</span>
         </div>
 
-        <div class="overlay-galeria"></div>
+        <p class="detalle-extra">
+            Un clásico retro que representa la historia y el estilo de Brasil.
+        </p>
 
-        <div class="contenido-galeria">
+        <div class="acciones-producto">
 
-            <h3>Brasil 1994 Retro</h3>
+            <button
+                class="btn-instagram"
+                onclick="abrirPedido(this, 'instagram')"
+            >
+                📸 Pedir por Instagram
+            </button>
 
-            <p class="precio">$400.00</p>
-
-            <div class="tallas-contenedor">
-                Tallas:
-                <span>S, M, G, XL, XXL</span>
-            </div>
-
-            <p class="detalle-extra">
-                Un clásico retro que representa la historia y el estilo de Brasil.
-            </p>
-
-            <div class="acciones-producto">
-
-                <button
-                    class="btn-instagram"
-                    onclick="abrirPedido(this, 'instagram')"
-                >
-                    📸 Pedir por Instagram
-                </button>
-
-                <button
-                    class="btn-whatsapp"
-                    onclick="abrirPedido(this, 'whatsapp')"
-                >
-                    🟢 Pedir por WhatsApp
-                </button>
-
-            </div>
+            <button
+                class="btn-whatsapp"
+                onclick="abrirPedido(this, 'whatsapp')"
+            >
+                🟢 Pedir por WhatsApp
+            </button>
 
         </div>
 
     </div>
 
+</div>
 
-    <!-- PRODUCTO 5 -->
+<!-- PRODUCTO 5 -->
 
-    <div
-        class="tarjeta-producto"
-        data-producto="Juventus Alternativa VFan"
-        data-precio="400"
-        data-tallas="S, M, G, XL"
-        data-detalle="Diseño alternativo de la Juventus con un estilo moderno y diferente."
-    >
+<div
+    class="tarjeta-producto"
+    data-producto="Juventus Alternativa VFan"
+    data-precio="400"
+    data-tallas="S, M, G, XL"
+    data-detalle="Diseño alternativo de la Juventus con un estilo moderno y diferente."
+>
 
-        <span class="badge-producto">ALTERNATIVA</span>
+    <span class="badge-producto">
+        ALTERNATIVA
+    </span>
 
-        <div class="imagen-contenedor">
+    <div class="imagen-contenedor">
 
-            <img
-                src="https://i.postimg.cc/wBYKCSzn/9b8be948-8a29-4a4f-bb40-0dc8914c644e.jpg"
-                alt="Juventus Alternativa VFan"
-            >
+        <img
+            src="https://i.postimg.cc/wBYKCSzn/9b8be948-8a29-4a4f-bb40-0dc8914c644e.jpg"
+            alt="Juventus Alternativa VFan"
+        >
 
+    </div>
+
+    <div class="overlay-galeria"></div>
+
+    <div class="contenido-galeria">
+
+        <h3>
+            Juventus Alternativa VFan
+        </h3>
+
+        <p class="precio">
+            $400.00
+        </p>
+
+        <div class="tallas-contenedor">
+            Tallas:
+            <span>S, M, G, XL</span>
         </div>
 
-        <div class="overlay-galeria"></div>
+        <p class="detalle-extra">
+            Diseño alternativo de la Juventus con un estilo moderno y diferente.
+        </p>
 
-        <div class="contenido-galeria">
+        <div class="acciones-producto">
 
-            <h3>Juventus Alternativa VFan</h3>
+            <button
+                class="btn-instagram"
+                onclick="abrirPedido(this, 'instagram')"
+            >
+                📸 Pedir por Instagram
+            </button>
 
-            <p class="precio">$400.00</p>
-
-            <div class="tallas-contenedor">
-                Tallas:
-                <span>S, M, G, XL</span>
-            </div>
-
-            <p class="detalle-extra">
-                Diseño alternativo de la Juventus con un estilo moderno y diferente.
-            </p>
-
-            <div class="acciones-producto">
-
-                <button
-                    class="btn-instagram"
-                    onclick="abrirPedido(this, 'instagram')"
-                >
-                    📸 Pedir por Instagram
-                </button>
-
-                <button
-                    class="btn-whatsapp"
-                    onclick="abrirPedido(this, 'whatsapp')"
-                >
-                    🟢 Pedir por WhatsApp
-                </button>
-
-            </div>
+            <button
+                class="btn-whatsapp"
+                onclick="abrirPedido(this, 'whatsapp')"
+            >
+                🟢 Pedir por WhatsApp
+            </button>
 
         </div>
 
     </div>
 
+</div>
 
-    <!-- PRODUCTO 6 -->
+<!-- PRODUCTO 6 -->
 
-    <div
-        class="tarjeta-producto"
-        data-producto="Portugal Black Edition"
-        data-precio="415"
-        data-tallas="S, M, G, XL, XXL, XXXL"
-        data-detalle="Una edición especial en negro con un diseño elegante y contundente."
-    >
+<div
+    class="tarjeta-producto"
+    data-producto="Portugal Black Edition"
+    data-precio="415"
+    data-tallas="S, M, G, XL, XXL, XXXL"
+    data-detalle="Una edición especial en negro con un diseño elegante y contundente."
+>
 
-        <span class="badge-producto">EDICIÓN ESPECIAL</span>
+    <span class="badge-producto">
+        EDICIÓN ESPECIAL
+    </span>
 
-        <div class="imagen-contenedor">
+    <div class="imagen-contenedor">
 
-            <img
-                src="https://i.postimg.cc/XNzPMTc8/5e6e2693-135e-4924-b454-637b0b84e17b.jpg"
-                alt="Portugal Black Edition"
-            >
+        <img
+            src="https://i.postimg.cc/XNzPMTc8/5e6e2693-135e-4924-b454-637b0b84e17b.jpg"
+            alt="Portugal Black Edition"
+        >
 
+    </div>
+
+    <div class="overlay-galeria"></div>
+
+    <div class="contenido-galeria">
+
+        <h3>
+            Portugal Black Edition
+        </h3>
+
+        <p class="precio">
+            $415.00
+        </p>
+
+        <div class="tallas-contenedor">
+            Tallas:
+            <span>S, M, G, XL, XXL, XXXL</span>
         </div>
 
-        <div class="overlay-galeria"></div>
+        <p class="detalle-extra">
+            Una edición especial en negro con un diseño elegante y contundente.
+        </p>
 
-        <div class="contenido-galeria">
+        <div class="acciones-producto">
 
-            <h3>Portugal Black Edition</h3>
+            <button
+                class="btn-instagram"
+                onclick="abrirPedido(this, 'instagram')"
+            >
+                📸 Pedir por Instagram
+            </button>
 
-            <p class="precio">$415.00</p>
-
-            <div class="tallas-contenedor">
-                Tallas:
-                <span>S, M, G, XL, XXL, XXXL</span>
-            </div>
-
-            <p class="detalle-extra">
-                Una edición especial en negro con un diseño elegante y contundente.
-            </p>
-
-            <div class="acciones-producto">
-
-                <button
-                    class="btn-instagram"
-                    onclick="abrirPedido(this, 'instagram')"
-                >
-                    📸 Pedir por Instagram
-                </button>
-
-                <button
-                    class="btn-whatsapp"
-                    onclick="abrirPedido(this, 'whatsapp')"
-                >
-                    🟢 Pedir por WhatsApp
-                </button>
-
-            </div>
+            <button
+                class="btn-whatsapp"
+                onclick="abrirPedido(this, 'whatsapp')"
+            >
+                🟢 Pedir por WhatsApp
+            </button>
 
         </div>
 
     </div>
+
+</div>
 
 </section>
-
 
 <div id="sin-resultados" class="sin-resultados">
     No encontramos jerseys con esa búsqueda.
 </div>
 
-
-<!-- BENEFICIOS -->
+<!-- ==================================================
+     BENEFICIOS
+================================================== -->
 
 <section class="beneficios">
 
@@ -1415,8 +2080,9 @@
 
 </section>
 
-
-<!-- TESTIMONIOS -->
+<!-- ==================================================
+     TESTIMONIOS
+================================================== -->
 
 <section class="testimonios">
 
@@ -1425,32 +2091,48 @@
     <div class="grid-testimonios">
 
         <div class="testimonio">
+
             <p>
                 "Muy buena calidad y la entrega fue súper sencilla."
             </p>
-            <strong>— Cliente Báifo</strong>
+
+            <strong>
+                — Cliente Báifo
+            </strong>
+
         </div>
 
         <div class="testimonio">
+
             <p>
                 "La playera llegó excelente, se ve todavía mejor en persona."
             </p>
-            <strong>— Cliente satisfecho</strong>
+
+            <strong>
+                — Cliente satisfecho
+            </strong>
+
         </div>
 
         <div class="testimonio">
+
             <p>
                 "Atención rápida y modelos diferentes a los de otras tiendas."
             </p>
-            <strong>— Comprador frecuente</strong>
+
+            <strong>
+                — Comprador frecuente
+            </strong>
+
         </div>
 
     </div>
 
 </section>
 
-
-<!-- FOOTER -->
+<!-- ==================================================
+     FOOTER
+================================================== -->
 
 <footer>
 
@@ -1471,7 +2153,9 @@
             <h3>Entregas</h3>
 
             <p>CDMX</p>
+
             <p>Líneas 2, 3 y 5 del Metro</p>
+
             <p>Puntos de encuentro</p>
 
         </div>
@@ -1496,7 +2180,9 @@
                 WhatsApp: 56 4400 6892
             </a>
 
-            <p>Atención directa por mensaje</p>
+            <p>
+                Atención directa por mensaje
+            </p>
 
         </div>
 
@@ -1505,6 +2191,7 @@
             <h3>Horario</h3>
 
             <p>Lunes a sábado</p>
+
             <p>Sujeto a disponibilidad</p>
 
         </div>
@@ -1512,15 +2199,21 @@
     </div>
 
     <div class="footer-copy">
+
         © 2026 Báifo Football Store · Todos los derechos reservados.
+
     </div>
 
 </footer>
 
+<!-- ==================================================
+     POPUP PROMOCION
+================================================== -->
 
-<!-- POPUP PROMOCION -->
-
-<div id="popup-promocion" class="popup-promocion">
+<div
+    id="popup-promocion"
+    class="popup-promocion"
+>
 
     <div class="popup-contenido">
 
@@ -1541,10 +2234,9 @@
 
 </div>
 
-
-<!-- ==========================================
+<!-- ==================================================
      MODAL DE PEDIDO
-========================================== -->
+================================================== -->
 
 <div
     id="modal-pedido"
@@ -1588,9 +2280,6 @@
 
         </div>
 
-
-        <!-- TALLA -->
-
         <div class="campo-formulario">
 
             <label for="pedido-talla">
@@ -1598,15 +2287,14 @@
             </label>
 
             <select id="pedido-talla">
+
                 <option value="">
                     Selecciona una talla
                 </option>
+
             </select>
 
         </div>
-
-
-        <!-- CANTIDAD -->
 
         <div class="campo-formulario">
 
@@ -1624,9 +2312,6 @@
 
         </div>
 
-
-        <!-- COMENTARIOS -->
-
         <div class="campo-formulario">
 
             <label for="pedido-comentarios">
@@ -1640,9 +2325,6 @@
 
         </div>
 
-
-        <!-- BOTON WHATSAPP -->
-
         <button
             type="button"
             id="boton-confirmar-whatsapp"
@@ -1650,9 +2332,6 @@
         >
             🟢 Continuar por WhatsApp
         </button>
-
-
-        <!-- BOTON INSTAGRAM -->
 
         <button
             type="button"
@@ -1662,7 +2341,6 @@
         >
             📸 Copiar mensaje y abrir Instagram
         </button>
-
 
         <div
             id="aviso-instagram"
@@ -1677,8 +2355,9 @@
 
 </div>
 
-
-<!-- MENSAJE COPIADO -->
+<!-- ==================================================
+     MENSAJE COPIADO
+================================================== -->
 
 <div
     id="mensaje-copiado"
@@ -1687,373 +2366,426 @@
     ✅ Mensaje copiado. Pégalo en Instagram.
 </div>
 
-
 <script>
 
-    /* ==========================================
-       BUSCADOR
-    ========================================== */
+/* ==================================================
+   BUSCADOR
+================================================== */
 
-    const buscador = document.getElementById("buscador");
-    const productos = document.querySelectorAll(".tarjeta-producto");
-    const sinResultados = document.getElementById("sin-resultados");
+const buscador = document.getElementById("buscador");
+const productos = document.querySelectorAll(".tarjeta-producto");
+const sinResultados = document.getElementById("sin-resultados");
 
-    buscador.addEventListener("input", function () {
+buscador.addEventListener("input", function () {
 
-        const texto = this.value
+    const texto = this.value
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+    let encontrados = 0;
+
+    productos.forEach(function(producto) {
+
+        const contenido = producto.textContent
             .toLowerCase()
             .normalize("NFD")
             .replace(/[\u0300-\u036f]/g, "");
 
-        let encontrados = 0;
+        if (contenido.includes(texto)) {
 
-        productos.forEach(function(producto) {
+            producto.style.display = "";
 
-            const contenido = producto.textContent
-                .toLowerCase()
-                .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "");
+            encontrados++;
 
-            if (contenido.includes(texto)) {
+        } else {
 
-                producto.style.display = "";
-                encontrados++;
+            producto.style.display = "none";
 
-            } else {
+        }
 
-                producto.style.display = "none";
+    });
+
+    if (encontrados === 0 && texto.trim() !== "") {
+
+        sinResultados.style.display = "block";
+
+    } else {
+
+        sinResultados.style.display = "none";
+
+    }
+
+});
+
+/* ==================================================
+   ANIMACION PRODUCTOS
+================================================== */
+
+const observador = new IntersectionObserver(
+    function(entradas) {
+
+        entradas.forEach(function(entrada) {
+
+            if (entrada.isIntersecting) {
+
+                entrada.target.classList.add("visible");
+
+                observador.unobserve(entrada.target);
 
             }
 
         });
 
-        if (encontrados === 0 && texto.trim() !== "") {
+    },
+    {
+        threshold: 0.12
+    }
+);
 
-            sinResultados.style.display = "block";
+productos.forEach(function(producto) {
 
-        } else {
+    observador.observe(producto);
 
-            sinResultados.style.display = "none";
+});
 
-        }
+/* ==================================================
+   VARIABLES PEDIDO
+================================================== */
+
+const modalPedido =
+    document.getElementById("modal-pedido");
+
+const cerrarModal =
+    document.getElementById("cerrar-modal");
+
+const tituloModal =
+    document.getElementById("titulo-modal");
+
+const subtituloModal =
+    document.getElementById("subtitulo-modal");
+
+const modalProducto =
+    document.getElementById("modal-producto");
+
+const modalPrecio =
+    document.getElementById("modal-precio");
+
+const modalDetalle =
+    document.getElementById("modal-detalle");
+
+const pedidoTalla =
+    document.getElementById("pedido-talla");
+
+const pedidoCantidad =
+    document.getElementById("pedido-cantidad");
+
+const pedidoComentarios =
+    document.getElementById("pedido-comentarios");
+
+const botonWhatsApp =
+    document.getElementById("boton-confirmar-whatsapp");
+
+const botonInstagram =
+    document.getElementById("boton-confirmar-instagram");
+
+const avisoInstagram =
+    document.getElementById("aviso-instagram");
+
+let productoSeleccionado = null;
+let metodoPedido = "";
+
+/* ==================================================
+   ABRIR PEDIDO
+================================================== */
+
+function abrirPedido(boton, metodo) {
+
+    productoSeleccionado =
+        boton.closest(".tarjeta-producto");
+
+    metodoPedido = metodo;
+
+    const nombre =
+        productoSeleccionado.dataset.producto;
+
+    const precio =
+        productoSeleccionado.dataset.precio;
+
+    const tallas =
+        productoSeleccionado.dataset.tallas;
+
+    const detalle =
+        productoSeleccionado.dataset.detalle;
+
+    modalProducto.textContent =
+        nombre;
+
+    modalPrecio.textContent =
+        "Precio: $" + precio + ".00";
+
+    modalDetalle.textContent =
+        detalle;
+
+    pedidoTalla.innerHTML =
+        '<option value="">Selecciona una talla</option>';
+
+    tallas.split(",").forEach(function(talla) {
+
+        const tallaLimpia =
+            talla.trim();
+
+        const opcion =
+            document.createElement("option");
+
+        opcion.value =
+            tallaLimpia;
+
+        opcion.textContent =
+            tallaLimpia;
+
+        pedidoTalla.appendChild(opcion);
 
     });
 
+    pedidoCantidad.value = "";
 
-    /* ==========================================
-       ANIMACION PRODUCTOS
-    ========================================== */
+    pedidoComentarios.value = "";
 
-    const observador = new IntersectionObserver(
-        function(entradas) {
+    if (metodo === "whatsapp") {
 
-            entradas.forEach(function(entrada) {
+        tituloModal.textContent =
+            "Pedido por WhatsApp";
 
-                if (entrada.isIntersecting) {
+        subtituloModal.textContent =
+            "Elige la talla, cantidad y agrega cualquier comentario.";
 
-                    entrada.target.classList.add("visible");
+        botonWhatsApp.style.display =
+            "block";
 
-                    observador.unobserve(entrada.target);
+        botonInstagram.style.display =
+            "none";
 
-                }
+        avisoInstagram.style.display =
+            "none";
 
-            });
+    } else {
 
-        },
-        {
-            threshold: 0.12
-        }
-    );
+        tituloModal.textContent =
+            "Pedido por Instagram";
 
-    productos.forEach(function(producto) {
-        observador.observe(producto);
-    });
+        subtituloModal.textContent =
+            "Completa tu pedido y copiaremos el mensaje automáticamente.";
 
+        botonWhatsApp.style.display =
+            "none";
 
-    /* ==========================================
-       VARIABLES DEL PEDIDO
-    ========================================== */
+        botonInstagram.style.display =
+            "block";
 
-    const modalPedido = document.getElementById("modal-pedido");
-
-    const cerrarModal = document.getElementById("cerrar-modal");
-
-    const tituloModal = document.getElementById("titulo-modal");
-    const subtituloModal = document.getElementById("subtitulo-modal");
-
-    const modalProducto = document.getElementById("modal-producto");
-    const modalPrecio = document.getElementById("modal-precio");
-    const modalDetalle = document.getElementById("modal-detalle");
-
-    const pedidoTalla = document.getElementById("pedido-talla");
-    const pedidoCantidad = document.getElementById("pedido-cantidad");
-    const pedidoComentarios = document.getElementById("pedido-comentarios");
-
-    const botonWhatsApp =
-        document.getElementById("boton-confirmar-whatsapp");
-
-    const botonInstagram =
-        document.getElementById("boton-confirmar-instagram");
-
-    const avisoInstagram =
-        document.getElementById("aviso-instagram");
-
-    let productoSeleccionado = null;
-    let metodoPedido = "";
-
-
-    /* ==========================================
-       ABRIR FORMULARIO
-    ========================================== */
-
-    function abrirPedido(boton, metodo) {
-
-        productoSeleccionado =
-            boton.closest(".tarjeta-producto");
-
-        metodoPedido = metodo;
-
-        const nombre =
-            productoSeleccionado.dataset.producto;
-
-        const precio =
-            productoSeleccionado.dataset.precio;
-
-        const tallas =
-            productoSeleccionado.dataset.tallas;
-
-        const detalle =
-            productoSeleccionado.dataset.detalle;
-
-
-        modalProducto.textContent = nombre;
-
-        modalPrecio.textContent =
-            "Precio: $" + precio + ".00";
-
-        modalDetalle.textContent =
-            " " + detalle;
-
-
-        /* TALLAS DE ESTA PLAYERA */
-
-        pedidoTalla.innerHTML =
-            '<option value="">Selecciona una talla</option>';
-
-        tallas.split(",").forEach(function(talla) {
-
-            const tallaLimpia = talla.trim();
-
-            const opcion =
-                document.createElement("option");
-
-            opcion.value = tallaLimpia;
-            opcion.textContent = tallaLimpia;
-
-            pedidoTalla.appendChild(opcion);
-
-        });
-
-
-        /* NO FORZAMOS EL NUMERO A 1 */
-
-        pedidoCantidad.value = "";
-
-        pedidoComentarios.value = "";
-
-
-        /* SOLO SE MUESTRA EL BOTON CORRESPONDIENTE */
-
-        if (metodo === "whatsapp") {
-
-            tituloModal.textContent =
-                "Pedido por WhatsApp";
-
-            subtituloModal.textContent =
-                "Elige la talla, cantidad y agrega cualquier comentario.";
-
-            botonWhatsApp.style.display = "block";
-            botonInstagram.style.display = "none";
-            avisoInstagram.style.display = "none";
-
-        } else {
-
-            tituloModal.textContent =
-                "Pedido por Instagram";
-
-            subtituloModal.textContent =
-                "Completa tu pedido y copiaremos el mensaje automáticamente.";
-
-            botonWhatsApp.style.display = "none";
-            botonInstagram.style.display = "block";
-            avisoInstagram.style.display = "block";
-
-        }
-
-
-        modalPedido.classList.remove("oculto");
-
-        document.body.style.overflow = "hidden";
-
-        setTimeout(function() {
-            pedidoTalla.focus();
-        }, 100);
-
+        avisoInstagram.style.display =
+            "block";
     }
 
+    modalPedido.classList.remove("oculto");
 
-    /* ==========================================
-       CERRAR MODAL
-    ========================================== */
+    document.body.style.overflow =
+        "hidden";
 
-    function cerrarFormulario() {
+    setTimeout(function() {
 
-        modalPedido.classList.add("oculto");
+        pedidoTalla.focus();
 
-        document.body.style.overflow = "";
+    }, 100);
 
-        productoSeleccionado = null;
+}
 
-    }
+/* ==================================================
+   CERRAR MODAL
+================================================== */
 
-    cerrarModal.addEventListener("click", cerrarFormulario);
+function cerrarFormulario() {
 
+    modalPedido.classList.add("oculto");
 
-    modalPedido.addEventListener("click", function(event) {
+    document.body.style.overflow = "";
+
+    productoSeleccionado = null;
+
+}
+
+cerrarModal.addEventListener(
+    "click",
+    cerrarFormulario
+);
+
+modalPedido.addEventListener(
+    "click",
+    function(event) {
 
         if (event.target === modalPedido) {
+
             cerrarFormulario();
+
         }
 
-    });
+    }
+);
 
-
-    document.addEventListener("keydown", function(event) {
+document.addEventListener(
+    "keydown",
+    function(event) {
 
         if (
             event.key === "Escape" &&
             !modalPedido.classList.contains("oculto")
         ) {
+
             cerrarFormulario();
-        }
-
-    });
-
-
-    /* ==========================================
-       CREAR MENSAJE
-    ========================================== */
-
-    function crearMensajePedido() {
-
-        if (!productoSeleccionado) {
-            return "";
-        }
-
-        const nombre =
-            productoSeleccionado.dataset.producto;
-
-        const precio =
-            productoSeleccionado.dataset.precio;
-
-        const detalle =
-            productoSeleccionado.dataset.detalle;
-
-        const talla =
-            pedidoTalla.value;
-
-        const cantidad =
-            pedidoCantidad.value.trim();
-
-        const comentarios =
-            pedidoComentarios.value.trim();
-
-
-        if (!talla) {
-
-            alert("Por favor selecciona una talla.");
-
-            pedidoTalla.focus();
-
-            return null;
 
         }
 
+    }
+);
 
-        if (!cantidad) {
+/* ==================================================
+   CREAR MENSAJE
+================================================== */
 
-            alert("Por favor escribe la cantidad.");
+function crearMensajePedido() {
 
-            pedidoCantidad.focus();
+    if (!productoSeleccionado) {
 
-            return null;
-
-        }
-
-
-        if (
-            Number(cantidad) < 1 ||
-            !Number.isInteger(Number(cantidad))
-        ) {
-
-            alert("La cantidad debe ser un número entero mayor a 0.");
-
-            pedidoCantidad.focus();
-
-            return null;
-
-        }
-
-
-        let mensaje = "";
-
-        mensaje += "Hola Báifo Football Store 👋\n\n";
-
-        mensaje += "Quiero hacer un pedido:\n\n";
-
-        mensaje += "⚽ Producto: " + nombre + "\n";
-
-        mensaje += "💰 Precio: $" + precio + ".00\n";
-
-        mensaje += "📏 Talla: " + talla + "\n";
-
-        mensaje += "🔢 Cantidad: " + cantidad + "\n";
-
-        mensaje += "📝 Detalle: " + detalle + "\n";
-
-
-        if (comentarios) {
-
-            mensaje +=
-                "💬 Comentarios adicionales: " +
-                comentarios +
-                "\n";
-
-        } else {
-
-            mensaje +=
-                "💬 Comentarios adicionales: Ninguno\n";
-
-        }
-
-
-        mensaje += "\n¿Me pueden confirmar disponibilidad?";
-
-        return mensaje;
+        return "";
 
     }
 
+    const nombre =
+        productoSeleccionado.dataset.producto;
 
-    /* ==========================================
-       WHATSAPP
-    ========================================== */
+    const precio =
+        productoSeleccionado.dataset.precio;
 
-    botonWhatsApp.addEventListener("click", function() {
+    const detalle =
+        productoSeleccionado.dataset.detalle;
 
-        const mensaje = crearMensajePedido();
+    const talla =
+        pedidoTalla.value;
+
+    const cantidad =
+        pedidoCantidad.value.trim();
+
+    const comentarios =
+        pedidoComentarios.value.trim();
+
+    if (!talla) {
+
+        alert(
+            "Por favor selecciona una talla."
+        );
+
+        pedidoTalla.focus();
+
+        return null;
+
+    }
+
+    if (!cantidad) {
+
+        alert(
+            "Por favor escribe la cantidad."
+        );
+
+        pedidoCantidad.focus();
+
+        return null;
+
+    }
+
+    if (
+        Number(cantidad) < 1 ||
+        !Number.isInteger(Number(cantidad))
+    ) {
+
+        alert(
+            "La cantidad debe ser un número entero mayor a 0."
+        );
+
+        pedidoCantidad.focus();
+
+        return null;
+
+    }
+
+    let mensaje = "";
+
+    mensaje +=
+        "Hola Báifo Football Store 👋\n\n";
+
+    mensaje +=
+        "Quiero hacer un pedido:\n\n";
+
+    mensaje +=
+        "⚽ Producto: " +
+        nombre +
+        "\n";
+
+    mensaje +=
+        "💰 Precio: $" +
+        precio +
+        ".00\n";
+
+    mensaje +=
+        "📏 Talla: " +
+        talla +
+        "\n";
+
+    mensaje +=
+        "🔢 Cantidad: " +
+        cantidad +
+        "\n";
+
+    mensaje +=
+        "📝 Detalle: " +
+        detalle +
+        "\n";
+
+    if (comentarios) {
+
+        mensaje +=
+            "💬 Comentarios adicionales: " +
+            comentarios +
+            "\n";
+
+    } else {
+
+        mensaje +=
+            "💬 Comentarios adicionales: Ninguno\n";
+
+    }
+
+    mensaje +=
+        "\n¿Me pueden confirmar disponibilidad?";
+
+    return mensaje;
+
+}
+
+/* ==================================================
+   WHATSAPP
+================================================== */
+
+botonWhatsApp.addEventListener(
+    "click",
+    function() {
+
+        const mensaje =
+            crearMensajePedido();
 
         if (!mensaje) {
+
             return;
+
         }
 
         const numero =
@@ -2073,77 +2805,84 @@
 
         cerrarFormulario();
 
-    });
+    }
+);
 
+/* ==================================================
+   INSTAGRAM
+================================================== */
 
-    /* ==========================================
-       INSTAGRAM
-    ========================================== */
+botonInstagram.addEventListener(
+    "click",
+    async function() {
 
-    botonInstagram.addEventListener("click", async function() {
-
-        const mensaje = crearMensajePedido();
+        const mensaje =
+            crearMensajePedido();
 
         if (!mensaje) {
-            return;
-        }
 
+            return;
+
+        }
 
         try {
 
-            await navigator.clipboard.writeText(mensaje);
+            await navigator.clipboard.writeText(
+                mensaje
+            );
 
         } catch (error) {
-
-            /* METODO ALTERNATIVO PARA COPIAR */
 
             const textarea =
                 document.createElement("textarea");
 
-            textarea.value = mensaje;
+            textarea.value =
+                mensaje;
 
-            textarea.style.position = "fixed";
-            textarea.style.opacity = "0";
+            textarea.style.position =
+                "fixed";
 
-            document.body.appendChild(textarea);
+            textarea.style.opacity =
+                "0";
+
+            document.body.appendChild(
+                textarea
+            );
 
             textarea.focus();
+
             textarea.select();
 
             try {
-                document.execCommand("copy");
+
+                document.execCommand(
+                    "copy"
+                );
+
             } catch (e) {}
 
-            document.body.removeChild(textarea);
+            document.body.removeChild(
+                textarea
+            );
 
         }
 
-
-        /* MOSTRAR AVISO */
-
         const aviso =
-            document.getElementById("mensaje-copiado");
+            document.getElementById(
+                "mensaje-copiado"
+            );
 
-        aviso.classList.add("mostrar");
-
+        aviso.classList.add(
+            "mostrar"
+        );
 
         setTimeout(function() {
 
-            aviso.classList.remove("mostrar");
+            aviso.classList.remove(
+                "mostrar"
+            );
 
         }, 3500);
-
-
-        /*
-         * Instagram no permite que una página web
-         * coloque automáticamente el texto dentro
-         * del DM como WhatsApp.
-         *
-         * Por eso:
-         * 1. Se copia el mensaje.
-         * 2. Se abre Instagram.
-         * 3. El cliente solo tiene que PEGAR.
-         */
 
         setTimeout(function() {
 
@@ -2157,50 +2896,66 @@
 
         }, 500);
 
-    });
+    }
+);
 
+/* ==================================================
+   POPUP PROMOCION
+================================================== */
 
-    /* ==========================================
-       POPUP PROMOCION
-    ========================================== */
+const popup =
+    document.getElementById(
+        "popup-promocion"
+    );
 
-    const popup =
-        document.getElementById("popup-promocion");
+const cerrarPopup =
+    document.getElementById(
+        "cerrar-popup"
+    );
 
-    const cerrarPopup =
-        document.getElementById("cerrar-popup");
+cerrarPopup.addEventListener(
+    "click",
+    function() {
 
+        popup.classList.add(
+            "oculto"
+        );
 
-    cerrarPopup.addEventListener("click", function() {
+    }
+);
 
-        popup.classList.add("oculto");
-
-    });
-
-
-    popup.addEventListener("click", function(event) {
+popup.addEventListener(
+    "click",
+    function(event) {
 
         if (event.target === popup) {
 
-            popup.classList.add("oculto");
+            popup.classList.add(
+                "oculto"
+            );
 
         }
 
-    });
+    }
+);
 
-
-    document.addEventListener("keydown", function(event) {
+document.addEventListener(
+    "keydown",
+    function(event) {
 
         if (
             event.key === "Escape" &&
             !popup.classList.contains("oculto")
         ) {
 
-            popup.classList.add("oculto");
+            popup.classList.add(
+                "oculto"
+            );
 
         }
 
-    });
+    }
+);
 
 </script>
 
